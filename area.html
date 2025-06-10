@@ -1,0 +1,2101 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <title>bookpayback.area</title>
+  <style>
+    @font-face {
+      font-family: 'ddag';
+      src: url('font/ddag 복사본.woff') format('woff');
+    }
+    @font-face {
+      font-family: 'cafe';
+      src: url('font/Cafe24Moyamoya-Regular-v1.0.ttf') format('truetype');
+    }
+    @font-face {
+      font-family: 'gmarket';
+      src: url('font/GmarketSansTTFMedium\ 복사본.ttf') format('truetype');
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'helvetica';
+      height: 100vh;
+      background: linear-gradient(to bottom, yellow, white, white, yellow);
+      overflow: hidden;
+    }
+
+    .navigate {
+      text-align: center;
+      font-size: 4vw;
+      font-weight: 300;
+      padding: 2vh 0;
+  
+    }
+    
+    .container,.p-container {
+  position: relative;
+  display: flex;
+}
+
+
+    .sidebar {
+  position: absolute;   
+  top:11vh;            
+  left: 32vw;           
+  width: 12vw;          
+  padding: 2vh 2vw;
+  display: flex;
+  gap: 3vh;
+  text-align: center;
+  background-color: transparent; 
+  z-index: 10000; 
+}
+
+
+
+    .home, .about, .others, .area{
+      padding: 1vh 1vw;
+  font-size: 1.5vw;
+  border: 1.5px solid black;
+  border-radius: 50rem;
+  white-space: nowrap; 
+  transition: all 0.3s ease;
+    }
+    .home:hover, .about:hover, .others:hover, .area:hover{
+        color: rgb(255, 255, 255);
+        background-color: black;
+    }
+  
+   
+    
+   
+
+    .areas-g {
+      position: absolute;
+      top: 23vh;
+      left: 18vw;
+      display: flex;
+      gap: 5vw;
+      justify-content: center;
+    }
+
+    .seocho, .ulsan, .uljin, .namwon {
+      width: 13vw; 
+      font-size: 2.5vw;
+      font-weight: 100;
+      font-family: 'gmarket';
+      height: 5vh;
+      line-height: 5vh;
+      padding: 0;
+      text-align: center;
+      border-radius: 2rem;
+      border: none;
+      background: none;
+      cursor: pointer;
+      z-index: 888;
+      transition: transform 0.2s ease-in-out;
+    }
+
+    .seocho:hover, .ulsan:hover, .uljin:hover, .namwon:hover {
+      transform: scale(1.2);
+      font-family: 'ddag';
+    }
+
+    .bando {
+      position: absolute;
+      top: 25vh;
+      left: 40vw;
+      width: 25vw;
+      height: 75vh;
+      object-fit: contain;
+      z-index: 55;
+      
+    }
+    .map-mini {
+  position: absolute;
+  
+  display: none;
+  cursor: pointer;
+  z-index: 100;
+  width: 25vw; 
+ height: auto;
+ box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.5);
+}
+    .point {
+      position: absolute;
+      width: 2vw;
+      height: 2vw;
+      left: 46vw;
+      top: 52vh;
+      background-color: rgb(255,255,110);
+      border-radius: 50%;
+      z-index: 99;
+    }
+    .point2{
+    position:absolute;
+    width: 2vw;
+    height: 2vw;
+    left: 50vw;
+    top: 64vh;
+    background-color: rgb(255,255,110);
+   transform: translateX(-0%);
+    border-radius: 50%;
+    z-index:99;
+}
+.point3{
+    position:absolute;
+    width: 2vw;
+    height: 2vw;
+    left: 60vw;
+    top: 49vh;
+    background-color: rgb(255,255,110);
+    transform: translateX(-0%);
+    border-radius: 50%;
+    z-index:99;
+}
+.point4{
+    position:absolute;
+    width: 2vw;
+    height: 2vw;
+    left: 61vw;
+    top: 69vh;
+    background-color: rgb(255,255,110);
+    
+    transform: translateX(-0%);
+    border-radius: 50%;
+    z-index:99;
+}
+    .page {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: linear-gradient( to bottom rgba(255,255,0,1), rgba(255,255,255,1), rgba(255,255,0,1) ) ;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.5s ease;
+      padding: 5vh 5vw;
+      z-index: 9999;
+    }
+    .info {
+      position: absolute;
+      top: 20vh;
+      left: 23vw;
+      display: flex;
+      gap: 5vw;
+      justify-content: center;
+    }
+    .info2{
+      position: absolute;
+      top: 20vh;
+      left: 26.5vw;
+      display: flex;
+      gap: 5vw;
+      justify-content: center;
+    }
+    .info3{
+      position: absolute;
+      top: 20vh;
+      left: 33vw;
+      display: flex;
+      gap: 5vw;
+      justify-content: center;
+    }
+    .store, .library, .people, .forbidden {
+      font-size: 2vw;
+      font-weight: 100;
+      height: 5vh;
+      line-height: 5vh;
+      padding: 0 2vw;
+      text-align: center;
+      border-radius: 2rem;
+      border: none;
+      background: none;
+      cursor: pointer;
+      z-index: 222;
+      
+    }
+
+    .store:hover,.library:hover, .people:hover, .forbidden:hover {
+      font-weight: bold;
+    }
+    .page.visible {
+      opacity: 1;
+      pointer-events: all;
+    }
+  
+
+
+.sc-book{
+    position: absolute;
+      top: 5vh;
+      left: 6vw;
+      width: 38vw;
+      height: auto;
+      object-fit: contain;
+      z-index: 55;
+}
+.sc-text{
+  font-family: 'ddag';
+    position: absolute;
+    top: 40vh;
+    left: 38vw;
+    font-size :15vw;
+    
+   z-index: 777;
+}
+
+    
+    .back-btn {
+      position: absolute;
+      top: 1.7vh;
+      left: 1vw;
+      padding: 1vh 1vw;
+      padding-top: 2vh ;
+      border-bottom: 2vh;
+      font-size: 2vw;
+      text-align: center;
+      border: 1px solid black;
+      background: white;
+      border-radius: 50%;
+      cursor: pointer;
+      z-index: 110;
+    }
+    .back-btn:hover {
+      background-color: black;
+      color: white;
+    }
+    .page-open .main,
+.page-open .line,
+.page-open .areas-g,
+.page-open .bando,
+.page-open .point,
+.page-open .point2,
+.page-open .point3,
+.page-open .point4 {
+  display: none;
+}
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.people-line {
+position: absolute;
+  left: -14vw;
+ top:15vh;
+  width: 35vw;
+  height: 30vh;
+  background-color: rgb(255, 255, 255); 
+  margin: 20px auto; 
+  border: 2px solid black;
+  border-radius: 3em;
+}
+
+.people-line2{
+position: absolute;
+top:15vh;
+left: 30vw;
+width: 35vw;
+  height: 30vh;
+  background-color: rgb(255, 255, 255); 
+  margin: 20px auto; 
+  border: 2px solid black;
+  border-radius: 3em;
+}
+
+.people-line3 {
+position: absolute;
+left: -23vw;
+  width: 100vw;
+  height: 2px;
+  background-color: black; 
+  margin: 20px auto; 
+  
+}
+.people-line4 {
+position: absolute;
+ top:12vh;
+  width: 65vw;
+  height: 45vh;
+  background-color: rgb(255, 255, 255); 
+  margin: 20px auto; 
+  border: 2px solid black;
+  border-radius: 3em;
+}
+
+.people-line5{
+position: absolute;
+top:15vh;
+width: 35vw;
+  height: 30vh;
+  background-color: rgb(255, 255, 255); 
+  margin: 20px auto; 
+  border: 2px solid black;
+  border-radius: 3em;
+}
+.people-line6 {
+position: absolute;
+  width: 100vw;
+  height: 2px;
+  background-color: black; 
+  margin: 20px auto; 
+}
+
+.index, .index2{
+    position: absolute;
+    font-weight: 600;
+    font-family: 'gmarket';
+    background-color: yellow;
+    color: black;
+    border: 2px solid black;
+    font-size: 2vw;
+    display: inline-block; 
+    padding-top: 2vw ;
+    padding: 0.33em 0.8em;   
+    border-radius: 20px 20px 0px 0; 
+    white-space: nowrap;
+   
+
+}
+.in-text, .in-text2, .in-text3{
+    position:absolute;
+    color: black;
+    font-family: 'gmarket';
+    white-space: nowrap;
+
+}
+     
+.index3{
+    position: absolute;
+    font-weight: 600;
+    font-family: 'gmarket';
+    background-color: yellow;
+    color: black;
+    border: 2px solid black;
+    font-size: 1.5vw;
+    display: inline-block; 
+    padding-top: 2vw ;
+    padding: 0.33em 0.8em;   
+    border-radius: 20px 20px 0px 0; 
+    white-space: nowrap;
+   
+
+}
+.menubox {
+  position: relative;
+}
+
+.menusub {
+      
+      background-color: rgb(0, 0, 0);
+      display: none;
+      position: absolute;
+      top: 120%;
+      left:0.5vw;
+      border-radius: 28px;
+      flex-direction: column;
+     color: white;
+     
+      z-index: 15;
+    }
+
+    .submenu  {
+      font-family:Arial, Helvetica, sans-serif;
+      font-weight: 400;
+      width: 8vw;
+      height: 3vw;
+      font-size: 1.5vw;
+      display: flex;
+      align-items: center;
+      padding-left: 5px;
+      padding-top: 2px;
+      padding-bottom: 2px;
+      justify-content: center; 
+      padding-top: 10px;
+      transition: background-color 0.3s;
+      color: rgb(255, 255, 255);
+    
+    }
+    .submenu:hover  {
+    font-weight: bolder;
+    color: #ffff04;
+      
+      
+    }
+    .bookstore-map{
+      position: absolute;
+      
+    }
+    .bookstore-map2{
+      position: absolute;
+      width: 43vw;
+      height: auto;
+    }
+    
+    
+    .bookstore-btn {
+  position: absolute;
+  font-family: 'cafe';
+  font-size: 1.4vw; 
+  border-radius: 50rem;
+  color: rgb(0, 0, 0);
+  border: 0.3vh solid rgb(0, 0, 0);
+  width: 10vw;     
+  height: 7vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  padding: 0; 
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.bookstore-btn:hover{
+  color: white;
+  background-color: black;
+  
+  
+}
+
+    .circle {
+      width: 40px;
+      height: 40px;
+      background-color: rgb(255, 255, 255);
+      border-radius: 50%;
+      position: absolute;
+      
+    }
+    .inner-circle {
+  width: 30px;
+  height: 30px;
+  background-color: #ffff04;
+  border: 1px solid rgb(5, 5, 5);
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+    
+.box{
+display: none;
+  position: absolute;
+  background-color: yellow;
+  border: 0.15vw solid black;
+  font-family: 'cafe';
+  font-size: 1.8vw;
+  z-index: 88;
+}
+
+.info-box{
+  position: absolute;
+  display: none;
+  width: 19vw;
+  height: 17vh;
+  background-color: rgb(181, 181, 181);
+  border: 0.15vw solid black;
+  font-size: 1.1vw;
+  padding-left: 1vw;
+  padding-top: 0.5vw;
+  z-index: 100;
+}
+
+/*.site-btn{
+  display: flex;
+  font-size: 0.9vw;
+  position: relative;
+  top: 0vh;
+  border-radius: 50%;
+  background-color: yellow;
+  border: 0.2vh solid black;
+  width: 5vw;
+  height: 3vh;
+
+}*/
+
+.site-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1vh;
+  font-size: 0.9vw;
+  border-radius: 1.5vh;
+  background-color: yellow;
+  border: 0.2vh solid black;
+  width: 6vw;
+  height: 3vh;
+  cursor: pointer;
+}
+  </style>
+</head>
+<body>
+   
+ 
+  <!-- 상단 -->
+  <div class="navigate">AREA</div>
+
+  <!-- 본문 -->
+  <!--<div class="container">-->
+    <div class="sidebar">
+       
+    
+      <a href="index.html" class="home">HOME</a>
+      <a href="About.html" class="about">ABOUT</a>
+      <a href="area.html" class="area" >AREA</a>
+    
+      
+      <div class="menubox">
+        <div class="others" onclick="showbox('submenu')" >OTHERS</div>
+        <div class="menusub" id="submenu";>
+          <a href ="review.html" class="submenu">후기</a>
+          <a href="recommend.html" class="submenu" >도서 추천</a>
+        </div>
+    </div>
+      
+    </div>
+  </div>
+ 
+
+
+  
+  <!-- 선 -->
+  <div class="line"></div>
+
+  <!-- 지도 이미지 -->
+  <img src="bando5.png" alt="반도" class="bando">
+
+  <!-- 지역 버튼 -->
+  <div class="areas-g">
+    <div class="seocho" onclick="showPage('seocho-page'); document.querySelector('.navigate').textContent = 'SEOCHO';">SEOCHO</div>
+    <div class="ulsan" onclick="showPage('ulsan-page'); document.querySelector('.navigate').textContent = 'ULSAN';">ULSAN</div>
+    <div class="uljin" onclick="showPage('uljin-page'); document.querySelector('.navigate').textContent = 'ULJIN';">ULJIN</div>
+    <div class="namwon" onclick="showPage('namwon-page'); document.querySelector('.navigate').textContent = 'NAMWON';">NAMWON</div>
+  </div>
+  <img src="s-mini.png" alt="서초 미니 지도" class="map-mini" id="seochoMiniMap" style="top: 35vh; left: 20vw;">
+  <img src="uj-mini.png" alt="울산 미니 지도" class="map-mini" id="ulsanMiniMap" style="top: 60vh; left: 65vw;">
+  <img src="us-mini.png" alt="울진 미니 지도" class="map-mini" id="uljinMiniMap" style="top: 35vh; left: 63vw;">
+  <img src="nw-mini.png" alt="남원 미니 지도" class="map-mini" id="namwonMiniMap" style="top: 55vh; left: 24vw;">
+
+  <!-- 포인트 -->
+  <div class="point"></div>
+  <div class="point2"></div>
+  <div class="point3"></div>
+  <div class="point4"></div>
+
+  <!-- 서초 상세 페이지 -->
+  <div id="seocho-page" class="page">
+    
+    <button class="back-btn" onclick="hidePages(); document.querySelector('.navigate').textContent = 'AREA';">↩</button>
+    <div style="margin-top: 3vh;">
+        <div class=" info">
+        <button class="store" onclick="showPage('bookstore-page')">서점</button>
+        <button class="library" onclick="showPage('library-page')" >도서관</button>
+        <button class="people" onclick="showPage('people-page')" >이용안내</button>
+        
+        <button class="forbidden" onclick="showPage('forbidden-page')" >제한도서</button>
+        <img src="s-book.png" alt="지역 책" class="sc-book">
+
+      </div>
+      <div class=" line2"></div>
+      <div class="sc-text">서초</div>
+      
+
+    </div>
+  </div>
+
+  
+  <!--이용대상-->
+  <div id="people-page" class="page">
+    <button class="back-btn" onclick="showPage('seocho-page')">↩</button>
+    <div class=" info">
+      <button class="store" onclick="showPage('bookstore-page')" >서점</button>
+        <button class="library"onclick="showPage('library-page')" >도서관</button>
+        <button class="people" onclick="showPage('people-page')" 
+        style=" font-weight: bolder;">이용안내</button>
+         <button class="forbidden" onclick="showPage('forbidden-page')" >제한도서</button>
+        <div class="line2" style="left: -11vw; top: -3vh;" >
+            <div class= "people-line">
+                <div class= "index" style="top: -6.6vh; left: 3vw;" >이용대상</div>
+            </div> <div class="in-text" style=" left: -8vw; top: 29vh; font-size: 2.5vw;">서초구민 도서관 회원</div>
+            
+            <div class= "people-line2" >
+                <div class= "index2" style="top: -6.6vh; left: 3vw;" >신청가능권수 및 기간</div>
+            </div><div class= "in-text2" style="top:25vh; left: 33vw; font-size: 1.8vw;" >
+              <span style=" font-weight: bolder; font-size: 2vw;">이용권수 :</span> 1인당 월 3권
+                <br><span style=" font-weight: bolder; font-size: 2vw;">이용기간 :  </span> 북페이백 신청 후 3주 이내
+                <br><span style=" font-weight: bolder; font-size: 2vw;" >대상도서 :</span>  서초구립도서관 희망도서<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;기준에 적합한 도서</div>
+            
+                <div class= "people-line3" style="top: 64vh;">
+                <div class= "index3" style="top: -5vh; left: 5vw;" >사이트 바로가기</div>
+                </div><a href="https://payback.seocholib.or.kr/homepage/main.do" class= "in-text3" style="top: 71vh; left: -18vw; font-size: 2.5vw;" > 서초북페이백</a>
+            
+        </div>
+        </div>
+       
+        
+    <div style="margin-top: 3vh;">
+        
+   
+    
+    </div>
+    
+  </div>
+</div>
+  </div>
+
+  <!--제한도서-->
+  <div id="forbidden-page" class="page">
+    <button class="back-btn" onclick="showPage('seocho-page')">↩</button>
+    <div class=" info">
+      <button class="store" onclick="showPage('bookstore-page')">서점</button>
+        <button class="library" onclick="showPage('library-page')">도서관</button>
+        <button class="people" onclick="showPage('people-page')" >이용안내</button>
+        
+        <button class="forbidden" style=" font-weight: bolder;" >제한도서</button>
+        
+        <div class="line2" style="left: -11vw; top: -3vh;" >
+            <div class= "people-line4" style="left: -5vw;">
+                <div class= "index" style="top: -6.6vh; left: 3vw;" >제한도서</div>
+            </div> <div class="in-text" style=" top: 20vh; left: 3vw; font-size: 3vh; ">
+                - 서초구 도서관 내 소장자료의 복본권수를 초과하는 경우
+                <br>- 문제집, 수험서, 참고서, 심화단계 전문도서
+                <br>- 컬러링북, 쓰기익힘책과 같은 1회용 도서, 세트도서
+                <br>- 팝업북, 사운드 북, 스프링 북과 같은 판형의 도서
+                <br>- 출판년도가 오래된 도서(발행 후 5년), 고가의 도서(5만원 초과)
+                <br>- 정기간행물, DVD, 전자책 등 비도서
+                <br>- 판타지, 로맨스, 무협지, 만화류 등 장르문학
+                <br>- 영리나 정치적 목적 자료, 미풍양속 및 정서 등의 문제를 유발할 수 있는 자료
+                <br>- 동일 도서의 중복 신청
+                <br>- 오/훼손된 도서, 부록이 누락된 도서</div>
+            
+            
+            
+                <div class= "people-line3" style="top: 64vh";>
+                <div class= "index3" style="top: -5vh; left: 5vw;" >사이트 바로가기</div>
+                </div><a href="https://payback.seocholib.or.kr/homepage/serviceinfo/paybackserviceinfo.do" class= "in-text3" style="top: 71vh; left: -18vw; font-size: 2.5vw;" > 서초북페이백</a>
+            
+        </div>
+      </div>
+        
+       
+  
+   
+        
+   
+    
+    
+    
+  </div>
+</div>
+  </div>
+
+<!--서점-->
+<div id="bookstore-page" class="page">
+  <button class="back-btn" onclick="showPage('seocho-page')">↩</button>
+  <div class=" info">
+    <button class="store" style=" font-weight: bolder;"onclick="showPage('bookstore-page')">서점</button>
+    <button class="library" onclick="showPage('library-page')">도서관</button>
+    
+    <button class="people" onclick="showPage('people-page')">이용안내</button>
+    <button class="forbidden" onclick="showPage('forbidden-page')" >제한도서</button></div>
+  <img src="sc-bookstore.png" alt="서초서점" class="bookstore-map" style="left: 5vw; top:12vh;width: 45vw;
+      height: auto;">
+
+  
+  
+  <div class="bookstore-btn" id="btn-geomok" style="left: 53vw; top:35vh">거목서점</div>
+  <div class="bookstore-btn" id="btn-sung" style="left: 65vw; top:35vh">금성서적</div>
+  <div class="bookstore-btn" id="btn-the" style="left: 77vw; top:35vh">더북스서점</div>
+  <div class="bookstore-btn" id="btn-bang" style="left: 53vw; top:55vh ">한길서적</div>
+  <div class="bookstore-btn" id="btn-seo" style="left: 65vw; top:55vh">서초서적</div>
+  <div class="bookstore-btn" id="btn-se" style="left: 77vw; top:55vh">세화서점</div>
+  <div class="bookstore-btn" id="btn-y" style="left: 53vw; top:75vh">연희서적</div>
+  <div class="bookstore-btn" id="btn-sol" style="left: 65vw; top:75vh">우면한솔서점</div>
+  <div class="bookstore-btn" id="btn-jin" style="left: 77vw; top:75vh">진영문고</div>
+
+  <div class="box" id="box-sung" style="top: 33vh; left:6.5vw">금성서점</div>
+  <div class="box" id="box-geomok" style="top: 17vh; left:11.6vw">거목서적</div>
+  <div class="box" id="box-the" style="top: 35vh; left:12vw">더북스서점</div>
+  <div class="box" id="box-bang" style="top: 43vh; left:8vw">한길서적</div>
+  <div class="box" id="box-seo" style="top: 47vh; left:12.5vw;">서초서적</div>
+  <div class="box" id="box-se" style="top: 20vh; left:8.5vw">세화서점</div>
+  <div class="box" id="box-y" style="top: 34vh; left:25vw">연희서적</div>
+  <div class="box" id="box-sol" style="top: 65vh; left:15vw">우면한솔서점</div>
+  <div class="box" id="box-jin" style="top: 61vh; left:9.5vw">진영문고</div>
+  
+  <div class="info-box" id="info-geomok" style="top: 12vw; left: 11.6vw;"><span style="font-weight: bolder; font-size:1.2vw">거목서점</span>
+   <p> <br>서울특별시 서초구 신반포로 213,<br> (잠원동) 반포쇼핑타운 7동 지하1층 <br>(06512)<br> 02-3476-1585 <span style=" position: absolute; margin-left: 4vw;
+    padding-top: 0.3vh; text-align: center; width:5vw;height:3vh; background-color: yellow; border-radius: 50%; border: 0.1vw solid black;">
+    <a href="https://map.naver.com/p/entry/place/33525741?placePath=%252Fhome%253Fentry%253Dplt&searchType=place&lng=127.0072885&lat=37.5072692&c=15.00,0,0,0,dh" >바로가기</a>
+   </span></p></div> 
+  <div class="info-box" id="info-sung" style="top: 21vw; left: 6.5vw;"><span style="font-weight: bolder; font-size:1.2vw">금성서적</span>
+    <p><br>서울특별시 서초구 신반포로3길 8,<br> (반포동)지하 1층 143호 <br>(06502)<br> 02-599-4148 <span style=" position: absolute; margin-left: 4vw;
+     padding-top: 0.3vh; text-align: center; width:5vw;height:3vh; background-color: yellow; border-radius: 50%; border: 0.1vw solid black;">
+     <a href="https://map.naver.com/p/entry/place/20634967?c=15.00,0,0,0,dh" >바로가기</a>
+    </span></p>
+  </div>
+  <div class="info-box" id="info-the" style="top: 39vh; left: 12vw;"><span style="font-weight: bolder; font-size:1.2vw">더북스서점</span>
+  <p><br>서울특별시 서초구 고무래로 22,<br> (반포동)지하1층, 쌍동빌딩서관<br>(06593)<br>02-3477-6545 <span style=" position: absolute; margin-left: 4vw;
+    padding-top: 0.3vh; text-align: center; width:5vw;height:3vh; background-color: yellow; border-radius: 50%; border: 0.1vw solid black;">
+    <a href="https://map.naver.com/p/search/더북스서점/place/1058425402?c=15.00,0,0,0,dh&placePath=%3Fentry%253Dbmp" >바로가기</a>
+   </span> </p></div>
+  <div class="info-box" id="info-bang" style="top: 47vh; left: 8vw;"><span style="font-weight: bolder; font-size:1.2vw">한길서적</span>
+  <p><br>서울특별시 서초구 동작대로 132, <br>(방배동)지하1층 <br>(06567)<br>02-591-2274 <span style=" position: absolute; margin-left: 4vw;
+    padding-top: 0.3vh; text-align: center; width:5vw;height:3vh; background-color: yellow; border-radius: 50%; border: 0.1vw solid black;">
+    <a href="https://map.naver.com/p/entry/place/13516797?c=15.00,0,0,0,dh" >바로가기</a>
+   </span></p></div>
+  <div class="info-box" id="info-seo" style="top: 51vh; left: 12.5vw;"><span style="font-weight: bolder; font-size:1.2vw">서초서적</span>
+  <p><br>서울특별시 서초구 효령로 224,<br> (서초동)<br>(06709)<br>02-583-4389 <span style=" position: absolute; margin-left: 4vw;
+    padding-top: 0.3vh; text-align: center; width:5vw;height:3vh; background-color: yellow; border-radius: 50%; border: 0.1vw solid black;">
+    <a href="https://map.naver.com/p/entry/place/20622920?c=11.00,0,0,0,dh" >바로가기</a>
+   </span></p></div>
+  <div class="info-box" id="info-se" style="top: 24vh; left: 8.5vw;"><span style="font-weight: bolder; font-size:1.2vw">세화서점</span>
+  <p><br> 서울특별시 서초구 신반포로 100,<br> (반포동)비층 09호 <br>(06547)<br>02-591-9333 <span style=" position: absolute; margin-left: 4vw;
+    padding-top: 0.3vh; text-align: center; width:5vw;height:3vh; background-color: yellow; border-radius: 50%; border: 0.1vw solid black;">
+    <a href="https://map.naver.com/p/entry/place/18368660?c=11.00,0,0,0,dh" >바로가기</a>
+   </span> </p></div>
+  <div class="info-box" id="info-y" style="top: 38vh; left: 25vw;"><span style="font-weight: bolder; font-size:1.2vw">연희서적</span>
+  <p><br>서울특별시 서초구 서초중앙로24길 43,<br>(서초동, 유원아파트 상가 113호)<br>(06603)<br>02-595-9773 <span style=" position: absolute; margin-left: 4vw;
+    padding-top: 0.3vh; text-align: center; width:5vw;height:3vh; background-color: yellow; border-radius: 50%; border: 0.1vw solid black;">
+    <a href="https://map.naver.com/p/search/연희서적/place/31506150?c=15.00,0,0,0,dh&placePath=%2Fphoto%3Fentry%253Dbmp" >바로가기</a>
+   </span> </p></div>
+  <div class="info-box" id="info-sol" style="top: 69vh; left: 15vw;"><span style="font-weight: bolder; font-size:1.2vw">우면한솔서적</span>
+  <p><br>서울특별시 서초구 태봉로 70,<br>(우면동) 우면프라자 1차 지하1층 <br>(06764)<br>02-529-5949 <span style=" position: absolute; margin-left: 4vw;
+    padding-top: 0.3vh; text-align: center; width:5vw;height:3vh; background-color: yellow; border-radius: 50%; border: 0.1vw solid black;">
+    <a href="https://map.naver.com/p/entry/place/36960320?c=15.00,0,0,0,dh" >바로가기</a>
+   </span> </p></div>
+  <div class="info-box" id="info-jin" style="top: 65vh; left: 9.5vw;"><span style="font-weight: bolder; font-size:1.2vw">진영문고</span>
+  <p><br>서울특별시 서초구 방배로 60, (방배동)<br>(06704)<br>02-3471-1997<span style=" position: absolute; margin-left: 4vw;
+    padding-top: 0.3vh; text-align: center; width:5vw;height:3vh; background-color: yellow; border-radius: 50%; border: 0.1vw solid black;">
+    <a href="https://map.naver.com/p/entry/place/13161285?c=15.00,0,0,0,dh" >바로가기</a>
+   </span></p></div>
+  
+  <!--거목서점-->
+  <div class="circle" style="top:23vh; left: 14vw;">
+    <div class="inner-circle"></div>
+  </div>
+  <!--금성서적-->
+  <div class="circle"  style="top:28vh; left: 9vw;">
+    <div class="inner-circle"></div>
+  </div>
+  <!--더북스-->
+  <div class="circle" style="top:30vh; left: 15vw;">
+    <div class="inner-circle"></div>
+  </div>
+  <!--한길서적-->
+  <div class="circle" style="top:37vh; left: 10vw;">
+    <div class="inner-circle"></div>
+  </div>
+  <!--서초-->
+  <div class="circle" style="top:42vh; left: 15vw;">
+    <div class="inner-circle"></div>
+  </div>
+  <!--세화-->
+  <div class="circle" style="top:25vh; left: 11vw;">
+    <div class="inner-circle"></div>
+  </div>
+  <!--연희-->
+  <div class="circle" style="top:34vh; left: 22vw;">
+    <div class="inner-circle"></div>
+  </div>
+  <!--우면한솔-->
+  <div class="circle" style="top:60vh; left: 19vw;">
+    <div class="inner-circle"></div>
+  </div>
+  <!--진영-->
+  <div class="circle" style="top:55vh; left: 12vw;">
+    <div class="inner-circle"></div>
+  </div>
+  <script>
+    const bsInfoBoxes = document.querySelectorAll('#bookstore-page .info-box');
+    const bsButtons = document.querySelectorAll('#bookstore-page .bookstore-btn');
+  
+    bsButtons.forEach((btn) => {
+      const id = btn.id.replace('btn-', '');
+      const box = document.getElementById('box-' + id);
+      const info = document.getElementById('info-' + id);
+  
+      if (box) {
+        box.style.display = 'none';
+        btn.addEventListener('mouseenter', () => {
+          box.style.display = 'block';
+        });
+        btn.addEventListener('mouseleave', () => {
+          box.style.display = 'none';
+        });
+      }
+  
+      if (info) {
+        btn.addEventListener('click', () => {
+          bsInfoBoxes.forEach((el) => {
+            el.style.display = (el === info && el.style.display !== 'block') ? 'block' : 'none';
+          });
+        });
+      }
+    });
+  </script>
+  
+  
+  
+</div>
+</div>
+</div>
+
+<!--도서관-->
+<div id="library-page" class="page">
+  <button class="back-btn" onclick="hidePages()">↩</button>
+  <div style="margin-top: 3vh;">
+      <div class=" info">
+      <button class="store"onclick="showPage('bookstore-page')">서점</button>
+      <button class="library" style=" font-weight: bolder;">도서관</button>
+      
+      <button class="people" onclick="showPage('people-page')">이용안내</button>
+      <button class="forbidden" onclick="showPage('forbidden-page')" >제한도서</button>
+      
+      <img src="sc-bookstore.png" alt="서초도서관" class="bookstore-map2" style="left:28vw; top:-4vh;">
+    </div>
+    <div class=" line2"></div>
+    
+    <div class="bookstore-btn" id="btn-banpo" style="left: 7vw; top:35vh">반포도서관</div>
+  <div class="bookstore-btn" id="btn-jam" style="left: 20vw; top:35vh">잠원도서관</div>
+  <div class="bookstore-btn" id="btn-teen" style="left: 33vw; top:35vh">청소년도서관 </div>
+  <div class="bookstore-btn" id="btn-paint" style="left: 7vw; top:55vh ">그림책도서관</div>
+  <div class="bookstore-btn" id="btn-yang" style="left: 20vw; top:55vh">양재도서관</div>
+  <div class="bookstore-btn" id="btn-si" style="left: 33vw; top:55vh">서이도서관</div>
+  <div class="bookstore-btn" id="btn-bae" style="left: 7vw; top:75vh">방배도서관</div>
+  <div class="bookstore-btn" id="btn-nae" style="left: 20vw; top:75vh">내곡도서관</div>
+
+  <div class="box" id="box-banpo" style="top: 24vh; left:58vw">▼반포도서관</div>
+  <div class="box" id="box-jam" style="top: 36vh; left:52vw">▲잠원도서관</div>
+  <div class="box" id="box-teen" style="top: 47vh; left:72vw">◀청소년도서관</div>
+  <div class="box" id="box-paint" style="top: 43vh; left:66vw">◀그림책도서관</div>
+  <div class="box" id="box-yang" style="top: 72vh; left:61vw;">▲양재도서관</div>
+  <div class="box" id="box-si" style="top: 41vh; left:46vw">서이도서관▶</div>
+  <div class="box" id="box-bae" style="top: 51vh; left:52vw">▲방배도서관</div>
+  <div class="box" id="box-nae" style="top: 60vh; left:59vw">▲내곡도서관</div>
+  
+    </div>
+
+<div class=" info">
+    
+<!--서초구립반포-->
+<div class="circle" style="top:9vh; left: 39vw;">
+  <div class="inner-circle"></div>
+</div>
+<!--잠원도서관-->
+<div class="circle"  style="top:11vh; left: 33vw;">
+  <div class="inner-circle"></div>
+</div>
+<!--서초청소년-->
+<div class="circle" style="top:27vh; left: 45vw;">
+  <div class="inner-circle"></div>
+</div>
+<!--그림책도서관-->
+<div class="circle" style="top:23vh; left: 40vw;">
+  <div class="inner-circle"></div>
+</div>
+<!--서초구립양재-->
+<div class="circle" style="top:47vh; left: 42vw;">
+  <div class="inner-circle"></div>
+</div>
+<!--서이도서관-->
+<div class="circle" style="top:21vh; left: 34vw;">
+  <div class="inner-circle"></div>
+</div>
+<!--방배도서관-->
+<div class="circle" style="top:26vh; left: 33vw;">
+  <div class="inner-circle"></div>
+</div>
+<!--서초구립내곡-->
+<div class="circle" style="top:35vh; left: 40vw;">
+    <div class="inner-circle"></div>
+</div>
+  
+<div class="info-box" id="info-banpo" style="top: 8vh; left:35vw"><span style="font-weight: bolder; font-size:1.2vw">반포도서관<span style="font-size: 0.9vw; font-weight: 500;
+        margin-left: 5vw;">(클릭 후 박스 닫기)</span></span>
+   <p> <br>서울 서초구 반포동 32-13 <br>(137040)<br> 02-520-8700 <span style=" position: absolute; margin-left: 4vw;
+    padding-top: 0.3vh; text-align: center; width:5vw;height:3vh; background-color: yellow; border-radius: 50%; border: 0.1vw solid black;">
+    <a href="https://www.seocholib.or.kr" >바로가기</a>
+   </span></p></div> 
+
+   <div class="info-box" id="info-jam" style="left: 29vw; top:20vh"><span style="font-weight: bolder; font-size:1.2vw">잠원도서관<span style="font-size: 0.9vw; font-weight: 500;
+        margin-left: 5vw;">(클릭 후 박스 닫기)</span></span>
+    <p> <br>서울 서초구 나루터로 38 <br>(06523)<br> 02-3477-8655 <span style=" position: absolute; margin-left: 4vw;
+     padding-top: 0.3vh; text-align: center; width:5vw;height:3vh; background-color: yellow; border-radius: 50%; border: 0.1vw solid black;">
+     <a href="https://jamwon.seocholib.or.kr" >바로가기</a>
+    </span></p></div>
+    <div class="info-box" id="info-teen" style="left: 42vw; top:31vh"><span style="font-weight: bolder; font-size:1.2vw">청소년도서관<span style="font-size: 0.9vw; font-weight: 500;
+        margin-left: 4vw;">(클릭 후 박스 닫기)</span></span>
+      <p> <br>서울 서초구 효령로77길 37 <br>(06629)<br> 02-3486-9543 <span style=" position: absolute; margin-left: 4vw;
+       padding-top: 0.3vh; text-align: center; width:5vw;height:3vh; background-color: yellow; border-radius: 50%; border: 0.1vw solid black;">
+       <a href="https://seocho.seocholib.or.kr" >바로가기</a>
+      </span></p></div>
+      <div class="info-box" id="info-paint" style="top: 27vh; left:43vw"><span style="font-weight: bolder; font-size:1.2vw">그림책도서관<span style="font-size: 0.9vw; font-weight: 500;
+        margin-left: 4vw;">(클릭 후 박스 닫기)</span></span>
+        <p> <br>서울 서초구 명달로 150 <br>(06655)<br> 02-3471-0995<span style=" position: absolute; margin-left: 4vw;
+         padding-top: 0.3vh; text-align: center; width:5vw;height:3vh; background-color: yellow; border-radius: 50%; border: 0.1vw solid black;">
+         <a href="https://picturebook.seocholib.or.kr" >바로가기</a>
+        </span></p></div>
+        <div class="info-box" id="info-yang" style="left: 38vw; top:56vh"><span style="font-weight: bolder; font-size:1.2vw">양재도서관<span style="font-size: 0.9vw; font-weight: 500;
+        margin-left: 5vw;">(클릭 후 박스 닫기)</span></span>
+          <p> <br>서울 서초구 양재천로 33 <br>(06755)<br> 02-3486-4050<span style=" position: absolute; margin-left: 4vw;
+           padding-top: 0.3vh; text-align: center; width:5vw;height:3vh; background-color: yellow; border-radius: 50%; border: 0.1vw solid black;">
+           <a href="https://yangjae.seocholib.or.kr" >바로가기</a>
+          </span></p></div>
+        <div class="info-box" id="info-si" style="left: 23vw; top:25vh"><span style="font-weight: bolder; font-size:1.2vw">서이도서관<span style="font-size: 0.9vw; font-weight: 500;
+        margin-left: 5vw;">(클릭 후 박스 닫기)</span></span>
+            <p> <br>서울 서초구 서초대로70길 51 서초2동주민센터 3층 <br>(06624)<br> 02-3471-1337<span style=" position: absolute; margin-left: 4vw;
+             padding-top: 0.3vh; text-align: center; width:5vw;height:3vh; background-color: yellow; border-radius: 50%; border: 0.1vw solid black;">
+             <a href="https://yangjae.seocholib.or.kr" >바로가기</a>
+            </span></p></div>
+        <div class="info-box" id="info-bae" style="left: 29vw; top:35vh"><span style="font-weight: bolder; font-size:1.2vw"> 방배도서관<span style="font-size: 0.9vw; font-weight: 500;
+        margin-left: 5vw;">(클릭 후 박스 닫기)</span></span>
+          <p> <br>서울 서초구 방배로 40 방배3동주민센터 4층 <br>(06705)<br>02-3471-3993<span style=" position: absolute; margin-left: 4vw;
+           padding-top: 0.5vh; text-align: center; width:5vw;height:3vh; background-color: yellow; border-radius: 50%; border: 0.1vw solid black;">
+          <a href="https://bangbae.seocholib.or.kr" >바로가기</a>
+          </span></p></div>
+          <div class="info-box" id="info-nae" style="left: 36vw; top:25.3vw"><span style="font-weight: bolder; font-size:1.2vw">내곡도서관<span style="font-size: 0.9vw; font-weight: 500;
+        margin-left: 5vw;">(클릭 후 박스 닫기)</span></span>
+            <p> <br>서울 서초구 청계산로7길 9-20 서초구립내곡도서관 <br>(06799)<br>02-3461-3007<span style=" position: absolute; margin-left: 4vw;
+             padding-top: 0.3vh; text-align: center; width:5vw;height:3vh; background-color: yellow; border-radius: 50%; border: 0.1vw solid black;">
+            <a href="https://naegok.seocholib.or.kr" >바로가기</a>
+            </span></p></div>
+  
+<div style="margin-top: 3vh;">
+  </div>
+  </div>
+</div>
+
+
+<script>
+  const libInfoBoxes = document.querySelectorAll('#library-page .info-box');
+  const libButtons = document.querySelectorAll('#library-page .bookstore-btn');
+
+  libButtons.forEach((btn) => {
+    const id = btn.id.replace('btn-', '');
+    const box = document.getElementById('box-' + id);
+    const info = document.getElementById('info-' + id);
+
+    if (box) {
+      box.style.display = 'none';
+      btn.addEventListener('mouseenter', () => {
+        box.style.display = 'block';
+      });
+      btn.addEventListener('mouseleave', () => {
+        box.style.display = 'none';
+      });
+    }
+
+    if (info) {
+      btn.addEventListener('click', () => {
+        libInfoBoxes.forEach((el) => {
+          el.style.display = (el === info && el.style.display !== 'block') ? 'block' : 'none';
+        });
+      });
+    }
+  });
+</script>
+
+
+<!--울산-->
+  <div id="ulsan-page" class="page">
+    <button class="back-btn" onclick="hidePages(); document.querySelector('.navigate').textContent = 'AREA';">↩</button>
+    <div style="margin-top: 3vh;">
+        <div class=" info">
+        <button class="store" onclick="showPage('bookstore-page2')">서점</button>
+        <button class="library" onclick="showPage('library-page2')">도서관</button>
+        
+        <button class="people" onclick="showPage('people-page2')">이용안내</button>
+        <button class="forbidden" onclick="showPage('forbidden-page2')" >제한도서</button>
+        <img src="ul-book.png" alt="지역 책" class="sc-book" style="left: 10vw;">
+
+      </div>
+      <div class=" line2"></div>
+      <div class="sc-text">울산</div>
+      </div>
+  </div>
+
+  
+
+  <!--이용대상-->
+  <div id="people-page2" class="page">
+    <button class="back-btn" onclick="showPage('ulsan-page')">↩</button>
+    <div class=" info">
+      <button class="store"onclick="showPage('bookstore-page2')" >서점</button>
+      <button class="library" onclick="showPage('library-page2')">도서관</button>
+      <button class="people" onclick="showPage('people-page2')" 
+      style=" font-weight: bolder;">이용안내</button>
+      
+      <button class="forbidden" onclick="showPage('forbidden-page2')" >제한도서</button>
+        <div class="line2" style="left: -11vw; top: -3vh;" >
+            <div class= "people-line">
+                <div class= "index" style="top: -6.6vh; left: 3vw;" >이용안내</div>
+            </div> <div class="in-text" style= "left:-12.5vw; top: 30vh; font-size: 1.6vw;">14세이상 울산 시민(본인명의 울산페이 사용자)</div>
+            
+            <div class= "people-line2" >
+                <div class= "index2" style="top: -6.4vh; left: 3vw;" >신청안내 및 반납기간</div>
+            </div><div class= "in-text2" style="left:32.5vw; top: 21vh; font-size: 1.2vw; line-height: 5vh;" >
+                신청 : 1인 월 4만원 내에서 2권까지 신청가능(반납월 기준), 
+                <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1인당 연간 최대 6권까지
+                <br>신청일: 2025. 1. 7.(화) ~ 예산 소진 시까지
+                <br>반납기한 : 구입일로부터 4주(28일) 내(구입일 포함)</div>
+            
+                <div class= "people-line3" style=" top:64vh;">
+                <div class= "index3" style="top: -5vh; left: 3vw;" >사이트 바로가기</div></div>
+                <a href="https://library.ulsan.go.kr:8443/bpay/board/notice/detail?bpay_notice_key=417827" class= "in-text3" style="top: 71vh; left: -20vw; font-size: 2.5vw;" > 울산 책값돌려주기</a>
+            
+        </div>
+       
+       
+        
+    <div style="margin-top: 3vh;">
+        
+   
+    
+    </div>
+    
+  </div>
+</div>
+  </div>
+  
+
+ 
+  
+    <!--주의사항-->
+  <div id="forbidden-page2" class="page">
+    <button class="back-btn" onclick="showPage('ulsan-page')">↩</button>
+    <div class=" info">
+      <button class="store"onclick="showPage('bookstore-page2')" >서점</button>
+        <button class="library" onclick="showPage('library-page2')">도서관</button>
+        <button class="people" onclick="showPage('people-page2') ">이용안내</button>
+        
+        <button class="forbidden" onclick="showPage('forbidden-page2')" 
+        style=" font-weight: bolder;" >제한도서</button>
+      <div class="line2" style="left: -11vw; top: -3vh;" >
+        <div class= "people-line4" style="left: -5vw;">
+            <div class= "index" style="top: -6.6vh; left: 3vw;" >제한도서</div>
+        </div> <div class="in-text" style=" top: 18vh; left: 1vw; font-size: 3vh; ">
+                - 북(Book)적북적 울산, 올해의 책 선정도서
+                <br>- 컬러링북, 쓰기익힘책 등 1회용 도서, 세트도서
+                <br>- 출판 연도로부터 1년이 경과한 도서
+                <br>- 팝업북, 사운드북, 스프링북과 같은 판형의 도서
+                <br>- 정치적 목적 자료, 미풍양속 및 정서 등의 문제를 유발할 수 있는 자료
+                <br>- 14세 미만 도서(인터넷 서점 분류 기준)
+                <br>- 로맨스, 판타지, 무협지, 라이트노벨, 만화(코믹북) 등 단순오락용 출판물
+                <br>- 대학교재 등과 같은 전문서적
+                <br>- 오염·훼손된 도서, 부록이 누락된 도서
+                <br>- 문제집, 수험서, 참고서, 심화단계 전문도서
+                <br>- 정기간행물, DVD, 전자책 등 비도서</div>
+            
+
+                
+                <div class= "people-line3" style=" top:64vh;">
+                  <div class= "index3" style="top: -5vh; left: 3vw;" >사이트 바로가기</div></div>
+                  <a href="https://library.ulsan.go.kr:8443/bpay/board/notice/detail?bpay_notice_key=417827" class= "in-text3" style="top: 71vh; left: -20vw; font-size: 2.5vw;" > 울산 책값돌려주기</a>
+        </div>
+        
+       
+        
+    <div style="margin-top: 3vh;">
+        
+   
+    
+    </div>
+    
+    
+</div>
+</div>
+<!--서점-->
+<div id="bookstore-page2" class="page">
+  <button class="back-btn" onclick="showPage('ulsan-page')">↩</button>
+  <div class=" info">
+    <button class="store"onclick="showPage('bookstore-page2')" style=" color: white; font-weight: bolder;"onclick="showPage('bookstore-page2')" >서점</button>
+    <button class="library" onclick="showPage('library-page2')">도서관</button>
+    
+    <button class="people" onclick="showPage('people-page2')">이용안내</button>
+    <button class="forbidden" onclick="showPage('forbidden-page2')" >제한도서</button></div>
+  <img src="ua-library.png" alt="울산서점" class="bookstore-map" style="left: 5vw; top:14vh; width: 48vw;
+      height: auto;">
+      <div class="bookstore-btn" id="btn-guam" style="left: 56vw; top:35vh">구암서점</div>
+      <div class="bookstore-btn" id="btn-nabi" style="left: 68vw; top:35vh">나비문고</div>
+      <div class="bookstore-btn" id="btn-mae" style="left: 80vw; top:35vh">매곡문고</div>
+      <div class="bookstore-btn" id="btn-hak" style="left: 56vw; top:55vh ">교학문고</div>
+      <div class="bookstore-btn" id="btn-gamja" style="left: 68vw; top:55vh">감자책방</div>
+      <div class="bookstore-btn" id="btn-dal" style="left: 80vw; top:55vh">달마서점</div>
+      <div class="bookstore-btn" id="btn-gang" style="left: 56vw; top:75vh">강남서점</div>
+      <div class="bookstore-btn" id="btn-dong" style="left: 68vw; top:75vh">대동서점</div>
+
+      <div class="box" id="box-guam" style="top: 44.5vh; left:25.5vw">▲구암서점</div>
+      <div class="box" id="box-nabi" style="top: 49vh; left:15vw">나비문고▶</div>
+      <div class="box" id="box-mae" style="top: 32vh; left:39vw">◀매곡문고</div>
+      <div class="box" id="box-hak" style="top: 39vh; left:43vw">◀교학문고</div>
+      <div class="box" id="box-gamja" style="top: 50vh; left:34.5vw;">▲감자책방</div>
+      <div class="box" id="box-dal" style="top: 56vh; left:28vw">▲달마서점</div>
+      <div class="box" id="box-gang" style="top: 57vh; left:34.5vw">▲강남서점</div>
+      <div class="box" id="box-dong" style="top: 67vh; left:42vw">▲대동서점</div>
+
+                                                                        <!--▲◀▲▶-->
+
+    <div class="info-box" id="info-guam" style="left: 25.5vw; top:48.5vh"><span style="font-weight: bolder; font-size:1.2vw">구암서점<span style="font-size: 0.9vw; font-weight: 500;
+        margin-left: 5vw;">(클릭 후 박스 닫기)</span></span>
+   <p> <br>울주군 범서읍 점촌3길<br>10-17 3층<br> 248-9096 <span style=" position: absolute; margin-left: 7vw; margin-top: 1vw;
+    padding-top: 0.2vh; text-align: center; width:5vw;height:3vh; background-color: yellow; border-radius: 50%; border: 0.1vw solid black;">
+    <a href="https://www.seocholib.or.kr" >바로가기</a>
+   </span></p></div> 
+
+  <div class="info-box" id="info-nabi" style="left: 15vw; top:53vh"><span style="font-weight: bolder; font-size:1.2vw">나비문고<span style="font-size: 0.9vw; font-weight: 500;
+        margin-left: 5vw;">(클릭 후 박스 닫기)</span></span>
+    <p> <br>울주군 청량읍 율리영해로 <br>99-1 101호<br> 248-7818 <span style=" position: absolute; margin-left: 7vw; margin-top: 1vw;
+     padding-top: 0.3vh; text-align: center; width:5vw;height:3vh; background-color: yellow; border-radius: 50%; border: 0.1vw solid black;">
+     <a href="https://jamwon.seocholib.or.kr" >바로가기</a>
+    </span></p></div>
+     <div class="info-box" id="info-mae" style="left: 39vw; top:36vh"><span style="font-weight: bolder; font-size:1.2vw">매곡문고<span style="font-size: 0.9vw; font-weight: 500;
+        margin-left: 4vw;">(클릭 후 박스 닫기)</span></span>
+      <p> <br>북구 매곡1로 46 118호 <br>(매곡동, 대우프라자)<br> 281-2217 <span style=" position: absolute; margin-left: 7vw; margin-top: 1vw;
+       padding-top: 0.3vh; text-align: center; width:5vw;height:3vh; background-color: yellow; border-radius: 50%; border: 0.1vw solid black;">
+       <a href="https://seocho.seocholib.or.kr" >바로가기</a>
+      </span></p></div>
+      <div class="info-box" id="info-hak" style="left: 33.1vw; top:42.5vh"><span style="font-weight: bolder; font-size:1.2vw">교학문고<span style="font-size: 0.9vw; font-weight: 500;
+        margin-left: 4vw;">(클릭 후 박스 닫기)</span></span>
+        <p> <br>북구 달천로 17 1층<br>286-1040<span style=" position: absolute;  margin-left: 7vw; margin-top: 2vw;
+         padding-top: 0.3vh; text-align: center; width:5vw;height:3vh; background-color: yellow; border-radius: 50%; border: 0.1vw solid black;">
+         <a href="https://picturebook.seocholib.or.kr" >바로가기</a>
+        </span></p></div>
+   <div class="info-box" id="info-gamja" style="top: 54vh; left:34.5vw;"><span style="font-weight: bolder; font-size:1.2vw">감자책방<span style="font-size: 0.9vw; font-weight: 500;
+        margin-left: 5vw;">(클릭 후 박스 닫기)</span></span>
+          <p> <br>중구 성안2길 29 1층 <br> 070-8277-4900<span style=" position: absolute; margin-left: 4vw; margin-top: 2vw;
+           padding-top: 0.3vh; text-align: center; width:5vw;height:3vh; background-color: yellow; border-radius: 50%; border: 0.1vw solid black;">
+           <a href="https://yangjae.seocholib.or.kr" >바로가기</a>
+          </span></p></div>
+            <div class="info-box" id="info-dal" style="top: 60vh; left:28vw"><span style="font-weight: bolder; font-size:1.2vw">달마서점<span style="font-size: 0.9vw; font-weight: 500;
+        margin-left: 5vw;">(클릭 후 박스 닫기)</span></span>
+            <p> <br>남구 거마로 7 1층<br> 272-6978<span style=" position: absolute; margin-left: 6vw; margin-top: 2vw;
+             padding-top: 0.3vh; text-align: center; width:5vw;height:3vh; background-color: yellow; border-radius: 50%; border: 0.1vw solid black;">
+             <a href="https://yangjae.seocholib.or.kr" >바로가기</a>
+            </span></p></div>
+            <div class="info-box" id="info-gang" style="top: 61vh; left:34.5vw"><span style="font-weight: bolder; font-size:1.2vw"> 강남서점<span style="font-size: 0.9vw; font-weight: 500;
+              margin-left: 5vw;">(클릭 후 박스 닫기)</span></span>
+                <p> <br>남구 삼산중로 128번길 18, 1층<br>267-4005<span style=" position: absolute; margin-left: 6vw; margin-top: 2vw;
+                 padding-top: 0.5vh; text-align: center; width:5vw;height:3vh; background-color: yellow; border-radius: 50%; border: 0.1vw solid black;">
+                <a href="https://bangbae.seocholib.or.kr" >바로가기</a>
+                </span></p></div>
+       <div class="info-box" id="info-dong" style="left: 32vw; top:71vh"><span style="font-weight: bolder; font-size:1.2vw"> 대동서점<span style="font-size: 0.9vw; font-weight: 500;
+        margin-left: 5vw;">(클릭 후 박스 닫기)</span></span>
+          <p> <br>동구 진성5길 75(06705)<br>233-4757<span style=" position: absolute; margin-left: 6vw; margin-top: 2vw;
+           padding-top: 0.5vh; text-align: center; width:5vw;height:3vh; background-color: yellow; border-radius: 50%; border: 0.1vw solid black;">
+          <a href="https://bangbae.seocholib.or.kr" >바로가기</a>
+          </span></p></div>
+
+          <script>
+            const bs2InfoBoxes = document.querySelectorAll('#bookstore-page2 .info-box');
+            const bs2Buttons = document.querySelectorAll('#bookstore-page2 .bookstore-btn');
+          
+            bs2Buttons.forEach((btn) => {
+              const id = btn.id.replace('btn-', '');
+              const box = document.getElementById('box-' + id);
+              const info = document.getElementById('info-' + id);
+          
+              if (box) {
+                box.style.display = 'none';
+                btn.addEventListener('mouseenter', () => {
+                  box.style.display = 'block';
+                });
+                btn.addEventListener('mouseleave', () => {
+                  box.style.display = 'none';
+                });
+              }
+          
+              if (info) {
+                btn.addEventListener('click', () => {
+                  bs2InfoBoxes.forEach((el) => {
+                    el.style.display = (el === info && el.style.display !== 'block') ? 'block' : 'none';
+                  });
+                });
+              }
+            });
+          </script>
+          
+
+
+  <!--구암서점-->
+  <div class="circle" style="top:40vh; left: 28vw;">
+    <div class="inner-circle"></div>
+  </div>
+  <!--나비문고-->
+  <div class="circle"  style="top:49vh; left: 26vw;">
+    <div class="inner-circle"></div>
+  </div>
+  <!--매곡문고-->
+  <div class="circle" style="top:32vh; left: 36vw;">
+    <div class="inner-circle"></div>
+  </div>
+  <!--교학문고-->
+  <div class="circle" style="top:39vh; left: 40vw;">
+    <div class="inner-circle"></div>
+  </div>
+  <!--감자책방-->
+  <div class="circle" style="top:45vh; left: 37vw;">
+    <div class="inner-circle"></div>
+  </div>
+  <!--달마-->
+  <div class="circle" style="top:51vh; left: 31vw;">
+    <div class="inner-circle"></div>
+  </div>
+  <!--강남-->
+  <div class="circle" style="top:52vh; left: 37vw;">
+    <div class="inner-circle"></div>
+  </div>
+  <!--대동-->
+  <div class="circle" style="top:61vh; left: 44.5vw;">
+    <div class="inner-circle"></div>
+  </div>
+  
+
+</div>
+
+
+<!--도서관-->
+<div id="library-page2" class="page">
+  <button class="back-btn" onclick="showPage('ulsan-page')">↩</button>
+  <div class=" info">
+    <button class="store" style="color: #ffffff;" onclick="showPage('bookstore-page2')" >서점</button>
+    <button class="library" style=" font-weight: bolder;" onclick="showPage('library-page2')">도서관</button>
+    
+    <button class="people" onclick="showPage('people-page2')">이용안내</button>
+    <button class="forbidden" onclick="showPage('forbidden-page2')" >제한도서</button></div>
+  <img src="ua-library.png" alt="울산서점" class="bookstore-map" style="left: 5vw; top:14vh; width: 48vw;
+      height: auto;">
+      <div class="bookstore-btn" id="btn-ong" style="left: 56vw; top:35vh">옹기종기<br>도서관</div>
+      <div class="bookstore-btn" id="btn-gag" style="left: 68vw; top:35vh">울산종갓집<br>도서관</div>
+      <div class="bookstore-btn" id="btn-bu" style="left: 80vw; top:35vh">남부도서관</div>
+      <div class="bookstore-btn" id="btn-miracle" style="left: 56vw; top:55vh ">기적의 도서관</div>
+      <div class="bookstore-btn" id="btn-song" style="left: 68vw; top:55vh">송정나래<br>도서관</div>
+      <div class="bookstore-btn" id="btn-juju" style="left: 80vw; top:55vh">울주도서관</div>
+      <div class="bookstore-btn" id="btn-don" style="left: 56vw; top:75vh">동부도서관</div>
+      <div class="bookstore-btn" id="btn-mok" style="left: 68vw; top:75vh">남목도서관</div>
+
+      <div class="box" id="box-ong" style="top: 44.5vh; left:20vw">▼옹기종기도서관</div>
+      <div class="box" id="box-gag" style="top: 45vh; left:40vw">◀울산종갓집도서관</div>
+      <div class="box" id="box-juju" style="top: 67vh; left:25vw">▲울주도서관</div>
+      <div class="box" id="box-miracle" style="top: 39vh; left:43vw">◀기적의 도서관</div>
+      <div class="box" id="box-song" style="top: 32vh; left:32vw;">송정나래도서관▶</div>
+      <div class="box" id="box-bu" style="top: 56vh; left:28vw">▲남부도서관</div>
+      <div class="box" id="box-mok" style="top: 57vh; left:44vw">▲남목도서관</div>
+      <div class="box" id="box-don" style="top: 67vh; left:42vw">▲동부도서관</div>
+
+
+
+ <div class="info-box" id="info-ong" style="left: 20vw; top:48.5vh"><span style="font-weight: bolder; font-size:1.2vw">옹기종기도서관<span style="font-size: 0.9vw; font-weight: 500;
+        margin-left: 3vw;">(클릭 후 박스 닫기)</span></span>
+    <p> <br>울산 울주군 온양읍 온양로 38-1<br>052-239-7413 <span style=" position: absolute; margin-left: 4vw; margin-top: 1vw;
+    padding-top: 0.2vh; text-align: center; width:5vw;height:3vh; background-color: yellow; border-radius: 50%; border: 0.1vw solid black;">
+    <a href="https://map.naver.com/p/entry/place/12198389?c=15.00,0,0,0,dh&placePath=/home?from=map&fromPanelNum=1&additionalHeight=76&timestamp=202506071833&locale=ko&svcName=map_pcv5" >바로가기</a>
+    </span></p></div> 
+    
+   <div class="info-box" id="info-gag" style="top: 49vh; left:40vw"><span style="font-weight: bolder; font-size:1.2vw">울산종갓집 도서관<span style="font-size: 0.9vw; font-weight: 500;
+        margin-left: 2vw;">(클릭 후 박스 닫기)</span></span>
+    <p> <br>울산 중구 종가3길 29<span style=" position: absolute; margin-left: 3vw; margin-top: 3vw;
+     padding-top: 0.3vh; text-align: center; width:5vw;height:3vh; background-color: yellow; border-radius: 50%; border: 0.1vw solid black;">
+     <a href="https://map.naver.com/p/entry/place/1376710606?c=15.00,0,0,0,dh&placePath=/home?from=map&fromPanelNum=1&additionalHeight=76&timestamp=202506071848&locale=ko&svcName=map_pcv5" >바로가기</a>
+    </span></p></div>
+    <div class="info-box" id="info-bu" style="top: 71vh; left:25vw"><span style="font-weight: bolder; font-size:1.2vw">울산남부도서관<span style="font-size: 0.9vw; font-weight: 500;
+        margin-left: 2vw;">(클릭 후 박스 닫기)</span></span>
+      <p> <br>울산 남구 거마로13번길 6<br> 052-259-7532<span style=" position: absolute; margin-left: 4vw; margin-top: 2vw;
+       padding-top: 0.3vh; text-align: center; width:5vw;height:3vh; background-color: yellow; border-radius: 50%; border: 0.1vw solid black;">
+       <a href="https://map.naver.com/p/entry/place/11592172?c=15.00,0,0,0,dh&placePath=/home?from=map&fromPanelNum=1&additionalHeight=76&timestamp=202506071845&locale=ko&svcName=map_pcv5" >바로가기</a>
+      </span></p></div>
+       <div class="info-box" id="info-miracle" style="left: 36.5vw; top: 43vh; "><span style="font-weight: bolder; font-size:1.2vw">기적의 도서관<span style="font-size: 0.9vw; font-weight: 500;
+        margin-left: 3vw;">(클릭 후 박스 닫기)</span></span>
+        <p> <br>울산 북구 이화5길 29-13<br>052-241-7420<span style=" position: absolute;  margin-left: 4vw; margin-top: 2vw;
+         padding-top: 0.3vh; text-align: center; width:5vw;height:3vh; background-color: yellow; border-radius: 50%; border: 0.1vw solid black;">
+         <a href="https://map.naver.com/p/search/기적의%20도서관/place/16310607?c=13.00,0,0,0,dh&placePath=/home?entry=bmp&from=map&fromPanelNum=2&timestamp=202506071850&locale=ko&svcName=map_pcv5&searchText=기적의%20도서관" >바로가기</a>
+        </span></p></div>
+    <div class="info-box" id="info-song" style="top: 36vh; left:32vw;"><span style="font-weight: bolder; font-size:1.2vw">송정나래도서관<span style="font-size: 0.9vw; font-weight: 500;
+        margin-left: 5vw;">(클릭 후 박스 닫기)</span></span>
+          <p> <br>울산 북구 화산로 89 <br>송정복합문화센터<br>052-241-8590<span style=" position: absolute; margin-left: 4vw; margin-top: -1vw;
+           padding-top: 0.3vh; text-align: center; width:5vw;height:3vh; background-color: yellow; border-radius: 50%; border: 0.1vw solid black;">
+           <a href="https://map.naver.com/p/search/송정나래도서관/place/1094371063?c=15.00,0,0,0,dh&isCorrectAnswer=true&placePath=/home?from=map&fromPanelNum=1&additionalHeight=76&timestamp=202506071851&locale=ko&svcName=map_pcv5&searchText=송정나래도서관" >바로가기</a>
+          </span></p></div>
+          <div class="info-box" id="info-juju" style="top: 71vh; left:25vw">울주도서관<span style="font-size: 0.9vw; font-weight: 500;
+        margin-left: 3vw;">(클릭 후 박스 닫기)</span></span>
+            <p> <br>울산 울주군 언양읍 언양로 1096<br>052-255-8133<span style=" position: absolute; margin-left: 4vw; margin-top: 2vw;
+             padding-top: 0.3vh; text-align: center; width:5vw;height:3vh; background-color: yellow; border-radius: 50%; border: 0.1vw solid black;">
+             <a href="https://map.naver.com/p/search/울주도서관/place/11592180?c=15.00,0,0,0,dh&placePath=/home?entry=bmp&from=map&fromPanelNum=2&timestamp=202506071900&locale=ko&svcName=map_pcv5&searchText=울주도서관" >바로가기</a>
+            </span></p></div>
+           <div class="info-box" id="info-don" style="top: 71vh; left:33.5vw"><span style="font-weight: bolder; font-size:1.2vw">울산동부도서관<span style="font-size: 0.9vw; font-weight: 500;
+              margin-left: 3vw;">(클릭 후 박스 닫기)</span></span>
+                <p> <br>울산 동구 봉수로 505 동부도서관<br>052-241-2300<span style=" position: absolute; margin-left: 4vw; margin-top: 2vw;
+                 padding-top: 0.5vh; text-align: center; width:5vw;height:3vh; background-color: yellow; border-radius: 50%; border: 0.1vw solid black;">
+                <a href="https://map.naver.com/p/search/울산동부서관/place/11592174?c=15.00,0,0,0,dh&placePath=/home?entry=bmp&from=map&fromPanelNum=2&timestamp=202506071906&locale=ko&svcName=map_pcv5&searchText=울산동부서관" >바로가기</a>
+                </span></p></div>
+      <div class="info-box" id="info-mok" style="top: 61vh; left:35.3vw"><span style="font-weight: bolder; font-size:1.2vw">남목도서관<span style="font-size: 0.9vw; font-weight: 500;
+        margin-left: 5vw;">(클릭 후 박스 닫기)</span></span>
+          <p> <br>울산 동구 남목12길 10<br>052-209-4580<span style=" position: absolute; margin-left: 4vw; margin-top: 2vw;
+           padding-top: 0.5vh; text-align: center; width:5vw;height:3vh; background-color: yellow; border-radius: 50%; border: 0.1vw solid black;">
+          <a href="https://map.naver.com/p/search/남목도서관/place/1723237186?c=12.00,0,0,0,dh&placePath=/home?entry=bmp&from=map&fromPanelNum=2&timestamp=202506071909&locale=ko&svcName=map_pcv5&searchText=남목도서관" >바로가기</a>
+          </span></p></div>
+      
+          
+
+
+  <!--울주-->
+  <div class="circle" style="top:62vh; left: 28.5vw;">
+    <div class="inner-circle"></div>
+  </div>
+  <!--나비문고-->
+  <div class="circle"  style="top:49vh; left: 26vw;">
+    <div class="inner-circle"></div>
+  </div>
+  <!--송정나래-->
+  <div class="circle" style="top:32vh; left: 46vw;">
+    <div class="inner-circle"></div>
+  </div>
+  <!--교학문고-->
+  <div class="circle" style="top:39vh; left: 40vw;">
+    <div class="inner-circle"></div>
+  </div>
+  <!--감자책방-->
+  <div class="circle" style="top:45vh; left: 37vw;">
+    <div class="inner-circle"></div>
+  </div>
+  <!--남부-->
+  <div class="circle" style="top:51vh; left: 31vw;">
+    <div class="inner-circle"></div>
+  </div>
+  <!--남목-->
+  <div class="circle" style="top:52vh; left: 47vw;">
+    <div class="inner-circle"></div>
+  </div>
+  <!--동부-->
+  <div class="circle" style="top:61vh; left: 44.5vw;">
+    <div class="inner-circle"></div>
+  </div>
+  
+
+  
+
+
+</div>
+  </div>
+  </div>
+  <script>
+    const ulsanLibInfoBoxes = document.querySelectorAll('#library-page2 .info-box');
+    const ulsanLibButtons = document.querySelectorAll('#library-page2 .bookstore-btn');
+  
+    ulsanLibButtons.forEach((btn) => {
+      const id = btn.id.replace('btn-', '');
+      const box = document.getElementById('box-' + id);
+      const info = document.getElementById('info-' + id);
+  
+      if (box) {
+        box.style.display = 'none';
+        btn.addEventListener('mouseenter', () => {
+          box.style.display = 'block';
+        });
+        btn.addEventListener('mouseleave', () => {
+          box.style.display = 'none';
+        });
+      }
+  
+      if (info) {
+        btn.addEventListener('click', () => {
+          ulsanLibInfoBoxes.forEach((el) => {
+            el.style.display = (el === info && el.style.display !== 'block') ? 'block' : 'none';
+          });
+        });
+      }
+    });
+  </script>
+  
+
+  <!--울진-->
+  <div id="uljin-page" class="page">
+    <button class="back-btn" onclick="hidePages(); document.querySelector('.navigate').textContent = 'AREA';">↩</button>
+    <div style="margin-top: 3vh;">
+        <div class="info3">
+        <button class="store" onclick="showPage('bookstore-page3')">서점</button>
+       
+        
+        <button class="people" onclick="showPage('people-page3')">이용안내</button>
+        <button class="forbidden" onclick="showPage('forbidden-page3')">제한도서</button>
+        <img src="uj-book.png" alt="지역 책" class="sc-book" style="width: 27vw;">
+
+      </div>
+      <div class="sc-text">울진</div>
+      </div>
+  </div>
+
+<!--이용대상-->
+<div id="people-page3" class="page">
+    <button class="back-btn" onclick="showPage('uljin-page')">↩</button>
+    <div class=" info3">
+      <button class="store"onclick="showPage('bookstore-page3')" >서점</button>
+        <button class="people" onclick="showPage('people-page3')" 
+        style=" font-weight: bolder;">이용안내</button>
+        
+        <button class="forbidden" onclick="showPage('forbidden-page3')" >제한도서</button>
+        <div class="line2" style="left: -11vw; top: -5vh;" >
+          
+            <div class= "people-line5" style="left: -20vw;">
+                <div class= "index" style="top: -6.6vh; left: 3vw;" >이용대상</div>
+            </div> <div class="in-text" style=" top: 30vh; left: -8vw; font-size: 3vw;">울진군민</div>
+            
+            <div class= "people-line5" style="left: 20vw;"  >
+                <div class= "index2" style="top: -6.6vh; left: 3vw;" >사업안내 및 반납기간</div>
+            </div><div class= "in-text2" style="top: 22vh; left: 23vw; font-size: 1.3vw; line-height: 5vh;" >
+                반납권수: 1인 월 2권(연 24권)
+                <br>신청일: 2025. 1. 7.(화) ~ 예산 소진 시까지
+                <br>환급: 책값의 약 70%을 울진 사랑카드로 환급
+                <br>반납기한 : 구입일로부터 8주(구매일 포함, 영수증 지참)</div>
+            
+                <div class= "people-line3" style=" top:64vh; left: -33vw;">
+                  <div class= "index3" style="top: -5vh; left: 3vw;" >사이트 바로가기</div></div>
+                  <a href="https://www.uljin.go.kr/board/view.uljin?menuCd=DOM_000000103002001000&boardId=BBS_NOTICE_UJ&dataSid=461840" class= "in-text3" style="top: 71vh; left: -30vw; font-size: 2.5vw;" > 울진 책값돌려주기</a>
+            
+        </div>
+        
+       
+        
+    <div style="margin-top: 3vh;">
+        
+   
+    
+    </div>
+    
+  </div>
+</div>
+
+
+<div id="bookstore-page3" class="page">
+  <button class="back-btn" onclick="showPage('ulsan-page')">↩</button>
+  <div class=" info3">
+    <button class="store" style="font-weight: bolder;"onclick="showPage('bookstore-page2')" >서점</button>
+  
+    <button class="people" onclick="showPage('people-page3')">이용안내</button>
+    <button class="forbidden" onclick="showPage('forbidden-page3')" >제한도서</button></div>
+  <img src="uj-bookstore.png" alt="울산서점" class="bookstore-map" style="left: 5vw; top:11vh; width: 33vw;
+      height: auto;">
+      <div class="bookstore-btn" id="btn-ye" style="left: 52vw; top:35vh">예지서림</div>
+      <div class="bookstore-btn" id="btn-u" style="left: 64vw; top:35vh">학우서점</div>
+      <div class="bookstore-btn" id="btn-duck" style="left: 76vw; top:35vh">서점오브덕</div>
+      <div class="bookstore-btn" id="btn-jong" style="left: 52vw; top:55vh ">종로서점</div>
+      <div class="bookstore-btn" id="btn-ji" style="left: 64vw; top:55vh">평지서림</div>
+
+      <div class="box" id="box-ye" style="top: 32vh; left:27vw">예지서림</div>
+      <div class="box" id="box-u" style="top: 40vh; left:32vw">학우서점</div>
+      <div class="box" id="box-duck" style="top: 58vh; left:25vw">서점오브덕</div>
+      <div class="box" id="box-jong" style="top: 65vh; left:33vw">종로서점</div>
+      <div class="box" id="box-ji" style="top:73vh; left:23vw;">평지서림</div>
+
+   <div class="info-box" id="info-ye" style="left: 15.2vw; top:36vh"><span style="font-weight: bolder; font-size:1.2vw">예지서림<span style="font-size: 0.9vw; font-weight: 500;
+        margin-left: 5vw;">(클릭 후 박스 닫기)</span></span>
+   <p> <br>경북 울진군 후포면 후포로 39-2<br>36369<br> 054-787-1318 <span style=" position: absolute; margin-left: 5vw; margin-top: 1vw;
+    padding-top: 0.2vh; text-align: center; width:5vw;height:3vh; background-color: yellow; border-radius: 50%; border: 0.1vw solid black;">
+    <a href="https://map.naver.com/p/search/예지서림/place/15660034?c=15.00,0,0,0,dh&placePath=/home?entry=bmp&from=map&fromPanelNum=2&timestamp=202506062356&locale=ko&svcName=map_pcv5&searchText=예지서림" >바로가기</a>
+   </span></p></div> 
+
+   <div class="info-box" id="info-u" style="left: 20.1vw; top:44vh"><span style="font-weight: bolder; font-size:1.2vw">학우서점<span style="font-size: 0.9vw; font-weight: 500;
+        margin-left: 5vw;">(클릭 후 박스 닫기)</span></span>
+    <p> <br>울주군 청량읍 율리영해로 <br>99-1 101호<br> 248-7818 <span style=" position: absolute; margin-left: 7vw; margin-top: 1vw;
+     padding-top: 0.3vh; text-align: center; width:5vw;height:3vh; background-color: yellow; border-radius: 50%; border: 0.1vw solid black;">
+     <a href="https://jamwon.seocholib.or.kr" >바로가기</a>
+    </span></p></div>
+     <div class="info-box" id="info-duck" style="top: 62vh; left:25vw"><span style="font-weight: bolder; font-size:1.2vw">서점오브덕<span style="font-size: 0.9vw; font-weight: 500;
+        margin-left: 4vw;">(클릭 후 박스 닫기)</span></span>
+      <p> <br>경북 울진군 울진읍 읍내8길 5 <br>5층 서점오브덕 <br> 0507-1342-8089 <span style=" position: absolute; margin-left: 3vw; margin-top: 1vw;
+       padding-top: 0.3vh; text-align: center; width:5vw;height:3vh; background-color: yellow; border-radius: 50%; border: 0.1vw solid black;">
+       <a href="https://map.naver.com/p/search/서점오브덕/place/1942761393?c=15.00,0,0,0,dh&isCorrectAnswer=true&placePath=/home?from=map&fromPanelNum=1&additionalHeight=76&timestamp=202506070006&locale=ko&svcName=map_pcv5&searchText=서점오브덕" >바로가기</a>
+      </span></p></div>
+      <div class="info-box" id="info-jong" style="top: 69vh; left:33vw"><span style="font-weight: bolder; font-size:1.2vw">종로서점<span style="font-size: 0.9vw; font-weight: 500;
+        margin-left: 4vw;">(클릭 후 박스 닫기)</span></span>
+        <p> <br>경북 울진군 울진읍 <br>울진중앙로 135<br>054-783-4020<span style=" position: absolute;  margin-left: 4vw; margin-top: 1vw;
+         padding-top: 0.3vh; text-align: center; width:5vw;height:3vh; background-color: yellow; border-radius: 50%; border: 0.1vw solid black;">
+         <a href="https://map.naver.com/p/search/종로서점/place/1277542272?c=15.00,0,0,0,dh&placePath=/home?entry=bmp&from=map&fromPanelNum=2&timestamp=202506070008&locale=ko&svcName=map_pcv5&searchText=종로서점" >바로가기</a>
+        </span></p></div>>
+   <div class="info-box" id="info-ji" style="top:77vh; left:23vw;"><span style="font-weight: bolder; font-size:1.2vw">평지서림<span style="font-size: 0.9vw; font-weight: 500;
+        margin-left: 5vw;">(클릭 후 박스 닫기)</span></span>
+          <p> <br>경북 울진군 울진읍 <br>울진중앙로 140 <br>054-783-9669<span style=" position: absolute; margin-left: 4vw; margin-top: 2vw;
+           padding-top: 0.3vh; text-align: center; width:5vw;height:3vh; background-color: yellow; border-radius: 50%; border: 0.1vw solid black;">
+           <a href="https://map.naver.com/p/search/평지서림/place/1356688085?c=15.00,0,0,0,dh&isCorrectAnswer=true&placePath=/home?from=map&fromPanelNum=1&additionalHeight=76&timestamp=202506070011&locale=ko&svcName=map_pcv5&searchText=평지서림" >바로가기</a>
+          </span></p></div>
+            
+          
+          
+
+
+  <!--예지서림-->
+ 
+    <div class="circle" style="top:27vh; left: 30vw;">
+    <div class="inner-circle"></div>
+  </div>
+  <!--학우서점-->
+  <div class="circle" style="top:40vh; left: 28vw;">
+    <div class="inner-circle"></div>
+  </div>
+  <!--서점오브덕-->
+  <div class="circle"  style="top:53vh; left: 28vw;">
+
+    <div class="inner-circle"></div>
+  </div>
+  <!--종로서점-->
+  <div class="circle" style="top:65vh; left: 30vw;">
+    <div class="inner-circle"></div>
+  </div>
+  <!--평지서림-->
+  <div class="circle" style="top:68vh; left: 25vw;">
+    <div class="inner-circle"></div>
+  </div>
+  
+
+</div>
+  </div>
+
+
+  <script>
+    const bs3InfoBoxes = document.querySelectorAll('#bookstore-page3 .info-box');
+    const bs3Buttons = document.querySelectorAll('#bookstore-page3 .bookstore-btn');
+  
+    bs3Buttons.forEach((btn) => {
+      const id = btn.id.replace('btn-', '');
+      const box = document.getElementById('box-' + id);
+      const info = document.getElementById('info-' + id);
+  
+      // 박스 hover
+      if (box) {
+        box.style.display = 'none';
+        btn.addEventListener('mouseenter', () => {
+          box.style.display = 'block';
+        });
+        btn.addEventListener('mouseleave', () => {
+          box.style.display = 'none';
+        });
+      }
+  
+      // info-box 클릭 toggle
+      if (info) {
+        btn.addEventListener('click', () => {
+          bs3InfoBoxes.forEach((el) => {
+            el.style.display = (el === info && el.style.display !== 'block') ? 'block' : 'none';
+          });
+        });
+      }
+    });
+  </script>
+  
+
+  <!--주의사항-->
+  <div id="forbidden-page3" class="page">
+    <button class="back-btn" onclick="showPage('uljin-page')">↩</button>
+    <div class=" info3">
+      <button class="store" onclick="showPage('bookstore-page3')">서점</button>
+      
+      <button class="people" onclick="showPage('people-page3') ">이용안내</button>
+      
+      <button class="forbidden" onclick="showPage('forbidden-page3')" 
+      style=" font-weight: bolder;" >제한도서</button>
+        <div class= "people-line4" style="left: -vw;">
+          <div class= "index" style="top: -6.6vh; left: 3vw;" >제한도서</div>
+      </div> <div class="in-text" style=" top: 19vh; left: -6vw; font-size: 3vh; ">
+                - 참고서(수험서), 교과서(전공도서 등)
+                <br>- 컬러링북, 쓰기익힘책 등 1회용 도서, 세트도서
+                <br>- 출판 연도로부터 1년이 경과한 도서
+                <br>- 팝업북, 사운드북, 스프링북과 같은 판형의 도서
+                <br>- 정치적 목적 자료, 미풍양속 및 정서 등의 문제를 유발할 수 있는 자료
+                <br>- 대학교재 등과 같은 전문서적
+                <br>- 오염·훼손된 도서
+                <br>- 문제집, 수험서, 참고서, 심화단계 전문도서
+                <br>- 정기간행물, DVD, 전자책 등 비도서
+                <br>-(동일도서 2권 이상 교환불가)</div>
+            
+
+                
+                <div class= "people-line3" style=" top:64vh; left: -35vw;">
+                  <div class= "index3" style="top: -5vh; left: 5vw;" >사이트 바로가기</div></div>
+                  <a href="https://www.uljin.go.kr/board/view.uljin?menuCd=DOM_000000103002001000&boardId=BBS_NOTICE_UJ&dataSid=461840" class= "in-text3" style="top: 71vh; left: -30vw; font-size: 2.5vw;" > 울진 책값돌려주기</a>
+            
+        </div>
+      
+       
+        
+    <div style="margin-top: 3vh;">
+        
+   
+    
+    </div>
+    
+
+
+    
+  </div>
+<!--남원-->
+  <div id="namwon-page" class="page">
+    <button class="back-btn" onclick="hidePages(); document.querySelector('.navigate').textContent = 'AREA';">↩</button>
+    <div style="margin-top: 3vh;">
+        <div class=" info2">
+        <button class="store"onclick="showPage('bookstore-page4')" >서점</button>
+        <button class="library" onclick="showPage('library-page4')">도서관</button>
+      
+        
+        <button class="people" onclick="showPage('people-page4')">이용안내</button>
+        <button class="forbidden" onclick="showPage('forbidden-page4')">제한도서</button>
+        <img src="nw-book.png" alt="지역 책" class="sc-book"  style="width: 45vw; left: 2vw; top: 10vh;" >
+
+      </div>
+      <div class=" line2"></div>
+      <div class="sc-text">남원</div>
+      </div>
+  </div>
+  
+  <!--이용대상-->
+  <div id="people-page4" class="page">
+    <button class="back-btn" onclick="showPage('namwon-page')">↩</button>
+    <div class=" info2">
+
+      <button class="store"onclick="showPage('bookstore-page4')" >서점</button>
+      <button class="library" onclick="showPage('library-page4')">도서관</button>
+      
+      <button class="people" onclick="showPage('people-page4')" 
+      style=" font-weight: bolder;">이용안내</button>
+      
+      <button class="forbidden" onclick="showPage('forbidden-page4')" >제한도서</button>
+     
+        <div class="line2" style="left: -11vw; top: -3vh;" >
+            <div class= "people-line">
+                <div class= "index" style="top: -6.6vh; left: 3vw;" >이용대상</div>
+            </div> <div class="in-text" style=" top: 30vh; left: -2vw; font-size: 3vw;">남원시민</div>
+            
+            <div class= "people-line2">
+                <div class= "index2" style="top: -6.6vh; left: 3vw;" >신청안내 및 반납기간</div>
+            </div><div class= "in-text2" style="top: 25vh; left: 33vw; font-size: 1.8vw; line-height: 5vh;" >
+                신청권수: 1인 월 4만원 내 2권까지
+                <br>신청일: 2025. 1 ~ 예산 소진 시까지
+                <br>반납기한: 구입 후 한달 이내</div>
+            
+                <div class= "people-line6" style=" top:64vh; left: -26.5vw;">
+                  <div class= "index3" style="top: -5vh; left: 3vw;" >사이트 바로가기</div></div>
+                  <a href="https://www.namwon.go.kr/lib/web/bbs/20002/bbsPostDetail.do?postIdx=3760"
+                  class= "in-text3" style="top: 71vh; left: -20vw; font-size: 2.5vw;" > 남원 책값돌려주기</a>
+            
+        </div>
+        
+    <div style="margin-top: 3vh;">
+        
+   
+    
+    </div>
+    
+  </div>
+</div>
+  </div>
+<!--서점-->
+  <div id="bookstore-page4" class="page">
+    <button class="back-btn" onclick="showPage('namwon-page')">↩</button>
+    <div class=" info2">
+      <button class="store"onclick="showPage('bookstore-page4')" style="  font-weight: bolder;"onclick="showPage('bookstore-page2')" >서점</button>
+      <button class="library" onclick="showPage('library-page4')">도서관</button>
+      
+      <button class="people" onclick="showPage('people-page4')">이용안내</button>
+      <button class="forbidden" onclick="showPage('forbidden-page4')" >제한도서</button></div>
+    <img src="nam-bookstore.png" alt="울산서점" class="bookstore-map" style="left: 3vw; top:27vh; width: 55vw;
+        height: auto;">
+        <div class="bookstore-btn" id="btn-chan" style="left: 60vw; top:35vh">천장과 책장</div>
+        <div class="bookstore-btn" id="btn-j" style="left: 72vw; top:35vh">진서점</div>
+        <div class="bookstore-btn" id="btn-rim" style="left:84vw; top:35vh">성지서림</div>
+        <div class="bookstore-btn" id="btn-sal" style="left: 60vw; top:55vh ">살롱드마고</div>
+        <div class="bookstore-btn" id="btn-one" style="left: 72vw; top:55vh">남원현서점</div>
+        <div class="bookstore-btn" id="btn-vnyl" style="left:84vw; top:55vh">비니루없는<br>점빵</div>
+        <div class="bookstore-btn" id="btn-bibon" style="left: 60vw; top:75vh">비본책방</div>
+  
+        <div class="box" id="box-chan" style="top: 37vh; left:35vw;">천장과 책장</div>
+        <div class="box" id="box-j" style="top: 40vh; left:28.5vw;">진서점</div>
+        <div class="box" id="box-rim" style="top: 58vh; left:25.5vw;">성지서림</div>
+        <div class="box" id="box-sal" style="top:65vh; left:37vw; ">살롱드마고</div>
+        <div class="box" id="box-one" style="top:73vh; left:23vw;">남원현서점</div>
+        <div class="box" id="box-vnyl" style="top:35vh; left:23vw;">비니루없는 점빵</div>
+        <div class="box" id="box-bibon" style="top:53vh; left:47vw;">비본책방</div>
+  
+     
+
+   <!--천장과 책장-->
+ 
+    <div class="circle" style="top:45vh; left: 39vw;">
+      <div class="inner-circle"></div>
+    </div>
+    <!--진서점-->
+    <div class="circle" style="top:45vh; left: 30vw;">
+      <div class="inner-circle"></div>
+    </div>
+    <!--성지서림-->
+    <div class="circle"  style="top:53vh; left: 28vw;">
+  
+      <div class="inner-circle"></div>
+    </div>
+    <!--살롱드-->
+    <div class="circle"  style="top:67vh; left: 28vw;">
+  
+      <div class="inner-circle"></div>
+    </div>
+    <!--남원현-->
+    <div class="circle"  style="top:59vh; left: 40vw;">
+  
+      <div class="inner-circle"></div>
+    </div>
+    <!--비니루-->
+    <div class="circle"  style="top:40vh; left: 28vw;">
+  
+      <div class="inner-circle"></div>
+    </div>
+    <!--비본-->
+    <div class="circle" style="top:53vh; left: 43vw;">
+  
+      <div class="inner-circle"></div>
+    </div>
+    
+    
+    <div class="info-box" id="info-chan" style="top: 41vh; left:35vw;"><span style="font-weight: bolder; font-size:1.2vw">천창과 책장<span style="font-size: 0.9vw; font-weight: 500;
+      margin-left: 5vw;">(클릭 후 박스 닫기)</span></span>
+ <p> <br>전북 남원시 산내면 대정방천길 1-4<br> 0507-1415-0394 <span style=" position: absolute; margin-left: 3vw; margin-top: 2vw;
+  padding-top: 0.2vh; text-align: center; width:5vw;height:3vh; background-color: yellow; border-radius: 50%; border: 0.1vw solid black;">
+  <a href="https://map.naver.com/p/entry/place/1664430661?c=15.00,0,0,0,dh&placePath=/home?from=map&fromPanelNum=1&additionalHeight=76&timestamp=202506070211&locale=ko&svcName=map_pcv5" >바로가기</a>
+ </span></p></div> 
+
+ <div class="info-box" id="info-j" style="top: 44vh; left:28.5vw;"><span style="font-weight: bolder; font-size:1.2vw">진서점<span style="font-size: 0.9vw; font-weight: 500;
+      margin-left: 5vw;">(클릭 후 박스 닫기)</span></span>
+  <p> <br>전북 남원시 광한북로 45-1 <br>063-625-4988<span style=" position: absolute; margin-left: 5vw; margin-top: 2vw;
+   padding-top: 0.3vh; text-align: center; width:5vw;height:3vh; background-color: yellow; border-radius: 50%; border: 0.1vw solid black;">
+   <a href="https://map.naver.com/p/search/진서점?c=15.00,0,0,0,dh" >바로가기</a>
+  </span></p></div>
+  <div class="info-box" id="info-rim" style="top: 62vh; left:25.5vw;"><span style="font-weight: bolder; font-size:1.2vw">성지서림<span style="font-size: 0.9vw; font-weight: 500;
+      margin-left: 4vw;">(클릭 후 박스 닫기)</span></span>
+    <p> <br>전북 남원시 충정로 116<br> 063-632-3834<span style=" position: absolute; margin-left: 3vw; margin-top: 1vw;
+     padding-top: 0.3vh; text-align: center; width:5vw;height:3vh; background-color: yellow; border-radius: 50%; border: 0.1vw solid black;">
+     <a href="https://map.naver.com/p/search/성지서림?c=15.00,0,0,0,dh" >바로가기</a>
+    </span></p></div>
+ <div class="info-box" id="info-sal" style="top:69vh; left:37vw"><span style="font-weight: bolder; font-size:1.2vw">살롱드마고<span style="font-size: 0.9vw; font-weight: 500;
+      margin-left: 4vw;">(클릭 후 박스 닫기)</span></span>
+      <p> <br>전북 남원시 시청북로 17 2층 <br>070-7797-3800<span style=" position: absolute;  margin-left: 4vw; margin-top: 1vw;
+       padding-top: 0.3vh; text-align: center; width:5vw;height:3vh; background-color: yellow; border-radius: 50%; border: 0.1vw solid black;">
+       <a href="https://map.naver.com/p/entry/place/1233279048?c=15.00,0,0,0,dh&placePath=/home?from=map&fromPanelNum=1&additionalHeight=76&timestamp=202506070206&locale=ko&svcName=map_pcv5" >바로가기</a>
+      </span></p></div>
+ <div class="info-box" id="info-one" style="top:77vh; left:23vw;"><span style="font-weight: bolder; font-size:1.2vw">남원현서점<span style="font-size: 0.9vw; font-weight: 500;
+      margin-left: 5vw;">(클릭 후 박스 닫기)</span></span>
+        <p> <br>전북 남원시 역재1길 6-1 <br>063-626-9903<span style=" position: absolute; margin-left: 4vw; margin-top: 1vw;
+         padding-top: 0.3vh; text-align: center; width:5vw;height:3vh; background-color: yellow; border-radius: 50%; border: 0.1vw solid black;">
+         <a href="https://map.naver.com/p/entry/place/21226730?c=15.00,0,0,0,dh&placePath=/home?from=map&fromPanelNum=1&additionalHeight=76&timestamp=202506070159&locale=ko&svcName=map_pcv5" >바로가기</a>
+        </span></p></div>
+  <div class="info-box" id="info-vnyl" style="top:39vh; left:23vw;"><span style="font-weight: bolder; font-size:1.2vw">비니루없는 점빵<span style="font-size: 0.9vw; font-weight: 500;
+          margin-left: 5vw;">(클릭 후 박스 닫기)</span></span>
+            <p> <br>전북 남원시 광한북로 34-3<br> 1층 비니루없는점빵 <br>063-626-0703<span style=" position: absolute; margin-left: 4vw; margin-top: 0vw;
+             padding-top: 0.3vh; text-align: center; width:5vw;height:3vh; background-color: yellow; border-radius: 50%; border: 0.1vw solid black;">
+             <a href="https://map.naver.com/p/entry/place/1807730561?c=15.00,0,0,0,dh&placePath=/home?from=map&fromPanelNum=1&additionalHeight=76&timestamp=202506070156&locale=ko&svcName=map_pcv5" >바로가기</a>
+            </span></p></div>
+ <div class="info-box" id="info-bibon" style="top:57vh; left:35.2vw;"><span style="font-weight: bolder; font-size:1.2vw">비본책방<span style="font-size: 0.9vw; font-weight: 500;
+       margin-left: 5vw;">(클릭 후 박스 닫기)</span></span>
+       <p> <br>전북 남원시 쑥고개로 25 2층 <br>0507-1456-7847<span style=" position: absolute; margin-left: 3vw; margin-top: 2vw;
+       padding-top: 0.3vh; text-align: center; width:5vw;height:3vh; background-color: yellow; border-radius: 50%; border: 0.1vw solid black;">
+       <a href="https://map.naver.com/p/entry/place/1958982352?c=15.00,0,0,0,dh&placePath=/home?from=map&fromPanelNum=1&additionalHeight=76&timestamp=202506070158&locale=ko&svcName=map_pcv5" >바로가기</a>
+      </span></p></div> 
+  
+  </div>
+    </div>
+  
+  
+   
+    
+    </div>
+    
+
+    <script>
+      const bs4InfoBoxes = document.querySelectorAll('#bookstore-page4 .info-box');
+      const bs4Buttons = document.querySelectorAll('#bookstore-page4 .bookstore-btn');
+    
+      bs4Buttons.forEach((btn) => {
+        const id = btn.id.replace('btn-', '');
+        const box = document.getElementById('box-' + id);
+        const info = document.getElementById('info-' + id);
+    
+        if (box) {
+          box.style.display = 'none';
+          btn.addEventListener('mouseenter', () => {
+            box.style.display = 'block';
+          });
+          btn.addEventListener('mouseleave', () => {
+            box.style.display = 'none';
+          });
+        }
+    
+        if (info) {
+          btn.addEventListener('click', () => {
+            bs4InfoBoxes.forEach((el) => {
+              el.style.display = (el === info && el.style.display !== 'block') ? 'block' : 'none';
+            });
+          });
+        }
+      });
+    </script>
+    
+
+
+    <div id="library-page4" class="page">
+      <button class="back-btn" onclick="showPage('namwon-page')">↩</button>
+      <div class=" info2">
+        <button class="store"onclick="showPage('bookstore-page4')" >서점</button>
+        <button class="library" style="  font-weight: bolder;" onclick="showPage('library-page4')">도서관</button>
+        
+        <button class="people" onclick="showPage('people-page4')">이용안내</button>
+        <button class="forbidden" onclick="showPage('forbidden-page4')" >제한도서</button></div>
+      <img src="nam-bookstore.png" alt="울산서점" class="bookstore-map" style="left: 43vw; top:27vh; width: 55vw;
+          height: auto;">
+          
+          <div class="bookstore-btn" id="btn-ul" style="left: 8vw; top:45vh ">어울림도서관</div>
+          <div class="bookstore-btn" id="btn-sirip" style="left: 20vw; top:45vh">남원시립도서관</div>
+          <div class="bookstore-btn" id="btn-child" style="left:32vw; top:45vh">어린이<br>도서관</div>
+        
+    
+          
+          <div class="box" id="box-ul" style="top:55vh; left:57vw; ">어울림도서관</div>
+          <div class="box" id="box-sirip" style="top:68vh; left:71vw;">남원시립도서관</div>
+          <div class="box" id="box-child" style="left:70vw; top:40vh">어린이 도서관</div>
+          
+ 
+    <!--어울림-->
+    <div class="circle" style="top:45vh; left: 74vw;">
+      <div class="inner-circle"></div>
+    </div>
+    <!--시립-->
+    <div class="circle" style="top:55vh; left: 69vw;">
+      <div class="inner-circle"></div>
+    </div>
+    <!--어청-->
+    <div class="circle"  style="top:63vh; left: 76vw;">
+  
+      <div class="inner-circle"></div>
+    </div>
+
+    <div class="info-box" id="info-ul" style="top:59vh; left:57vw;"><span style="font-weight: bolder; font-size:1.2vw">남원어울림도서관</span><span style="font-size: 0.9vw; font-weight: 500;
+      margin-left: 2vw;">(클릭 후 박스 닫기)</span></span>
+ <p> <br>전북 남원시 금동로 32 <br>남원어울림도서관<span style=" position: absolute; margin-left: 3vw; margin-top: 2vw;
+  padding-top: 0.2vh; text-align: center; width:5vw;height:3vh; background-color: yellow; border-radius: 50%; border: 0.1vw solid black;">
+  <a href="https://map.naver.com/p/search/남원어울림도서관/place/1820449901?c=15.00,0,0,0,dh&isCorrectAnswer=true&placePath=/home?additionalHeight=76&from=map&fromPanelNum=1&locale=ko&searchText=남원어울림도서관&svcName=map_pcv5&timestamp=202506071705&type=list&from=map&fromPanelNum=1&locale=ko&searchText=남원어울림도서관&svcName=map_pcv5&timestamp=202506071705&type=list&additionalHeight=76" >바로가기</a>
+ </span></p></div> 
+
+ <div class="info-box" id="info-sirip" style="top:72vh; left:71vw;"><span style="font-weight: bolder; font-size:1.2vw">남원시립도서관<span style="font-size: 0.9vw; font-weight: 500;
+      margin-left: 2vw;">(클릭 후 박스 닫기)</span></span>
+  <p> <br>전북 남원시 광한북로 54<br>063-620-8978<span style=" position: absolute; margin-left: 5vw; margin-top: 2vw;
+   padding-top: 0.3vh; text-align: center; width:5vw;height:3vh; background-color: yellow; border-radius: 50%; border: 0.1vw solid black;">
+   <a href="https://map.naver.com/p/search/남원시립도서관?c=15.00,0,0,0,dh" >바로가기</a>
+  </span></p></div>
+  <div class="info-box" id="info-child" style="left:70vw; top:44vh"><span style="font-weight: bolder; font-size:1.2vw">어린이도서관<span style="font-size: 0.9vw; font-weight: 500;
+      margin-left: 2vw;">(클릭 후 박스 닫기)</span></span>
+    <p> <br>전북특별자치도 남원시 역재3길 12 <br>남원시어린이청소년도서관<br> 063-620-5290<span style=" position: absolute; margin-left: 3vw; margin-top: 1vw;
+     padding-top: 0.3vh; text-align: center; width:5vw;height:3vh; background-color: yellow; border-radius: 50%; border: 0.1vw solid black;">
+     <a href="https://map.naver.com/p/search/남원어린이도서관?c=10.00,0,0,0,dh" >바로가기</a>
+    </span></p></div>
+  
+  </div><!--도서관 div-->
+
+ <!--남원  스크립트 -->
+<script>
+  const namwonLibInfoBoxes = document.querySelectorAll('#library-page4 .info-box');
+  const namwonLibButtons = document.querySelectorAll('#library-page4 .bookstore-btn');
+
+  namwonLibButtons.forEach((btn) => {
+    const id = btn.id.replace('btn-', '');
+    const box = document.getElementById('box-' + id);
+    const info = document.getElementById('info-' + id);
+
+    if (box) {
+      box.style.display = 'none';
+      btn.addEventListener('mouseenter', () => {
+        box.style.display = 'block';
+      });
+      btn.addEventListener('mouseleave', () => {
+        box.style.display = 'none';
+      });
+    }
+
+    if (info) {
+      btn.addEventListener('click', () => {
+        namwonLibInfoBoxes.forEach((el) => {
+          el.style.display = (el === info && el.style.display !== 'block') ? 'block' : 'none';
+        });
+      });
+    }
+  });
+</script>
+
+  
+  
+
+
+  <!--주의사항-->
+  <div id="forbidden-page4" class="page">
+    <button class="back-btn" onclick="showPage('namwon-page')">↩</button>
+    <div class=" info2">
+      <button class="store"onclick="showPage('bookstore-page4')" >서점</button>
+      <button class="library" onclick="showPage('library-page4')" >도서관</button>
+      <button class="people" onclick="showPage('people-page4') ">이용안내</button>
+      
+      <button class="forbidden" onclick="showPage('forbidden-page4')" 
+      style=" font-weight: bolder;" >제한도서</button>
+      <div class="line2" style="left: -11vw; top: -3vh;" >
+        <div class= "people-line4" style="left: -5vw;">
+          <div class= "index" style="top: -6.6vh; left: 3vw;" >제한도서</div>
+      </div> <div class="in-text" style=" top: 18vh; left: -2vw; font-size: 3vh; ">
+                - 소장도서, 구입.정리중 도서/ 만화책 절대 불가 (학습만화를 포함한 모든 만화책)
+                <br>- 시리즈 도서 1권부터 순차별로 구입(도서관애 문의)/ 대학교재(전문서적)
+                <br>- 출판 연도가 10년이상 경과한 도서(2016년 발간 이후 도서만 구매 가능)
+                <br>- 팝업북, 사운드북, 스프링북과 같은 판형의 도서
+                <br>- 정치적 목적 자료, 미풍양속 및 정서 등의 문제를 유발할 수 있는 자료
+                <br>- 14세 미만 도서(인터넷 서점 분류 기준)
+                <br>- 정치적, 미풍양속 및 정서 등의 문제 유발 자료(성인물, 특정종교 등)
+                <br>- 오염·훼손된 도서, 부록이 누락된 도서
+                <br>- 해외원서/ 오.훼손된 도서, 부록이 누락된 도서
+                <br>- 단순 오락용 출판물( 판타지, 로맨스 소설, 무협지, 라이트노벨 등)
+                <br>- 정기간행물, DVD, 전자책 등 비도서</div>
+            
+
+                
+                <div class= "people-line6" style=" top:64vh; left: -26.5vw;">
+                  <div class= "index3" style="top: -5vh; left: 3vw;" >사이트 바로가기</div></div>
+                  <a href="https://www.namwon.go.kr/lib/web/bbs/20002/bbsPostDetail.do?postIdx=3760"
+                  class= "in-text3" style="top: 71vh; left: -20vw; font-size: 2.5vw;" > 남원 책값돌려주기</a>
+        
+            
+        </div>
+       
+       
+        
+    <div style="margin-top: 3vh;">
+        
+   
+    
+    </div>
+    
+  </div>
+</div>
+
+
+
+  <!--<script> 
+    function showPage(pageId) {
+      const page = document.getElementById(pageId);
+      page.classList.add('visible');
+      document.body.classList.add('page-open');
+    }
+
+    function hidePages() {
+      const pages = document.querySelectorAll('.page');
+      pages.forEach(p => p.classList.remove('visible'));
+      document.body.classList.remove('page-open');
+    }
+  </script>-->
+  <script>
+    function showbox(id) {
+      const submenu = document.getElementById(id);
+      if (submenu.style.display === "none" || submenu.style.display === "") {
+        submenu.style.display = "flex";
+      } else {
+        submenu.style.display = "none";
+      }
+    }
+  </script>
+  
+  <script>
+    function showPage(pageId) {
+      
+      const pages = document.querySelectorAll('.page');
+      pages.forEach(p => p.classList.remove('visible'));
+  
+    
+      const page = document.getElementById(pageId);
+      if (page) {
+        page.classList.add('visible');
+        document.body.classList.add('page-open');
+      }
+    }
+    const goHomeBtn = document.querySelector('.gotohome');
+    if (goHomeBtn) {
+      goHomeBtn.style.display = 'none';
+    }
+  
+    function hidePages() {
+      const pages = document.querySelectorAll('.page');
+      pages.forEach(p => p.classList.remove('visible'));
+      document.body.classList.remove('page-open');
+      const goHomeBtn = document.querySelector('.gotohome');
+    if (goHomeBtn) {
+      goHomeBtn.style.display = 'block';
+    }
+    }
+    
+  </script>
+  
+
+<script>
+    document.querySelectorAll('.fade-link').forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+  
+        const href = this.href;
+        document.body.classList.add('fade-out');
+  
+        setTimeout(() => {
+          window.open(href, '_blank'); 
+        }, 500); 
+      });
+    });
+  </script>
+  
+
+  <script>
+    const mappings = [
+      { btnClass: 'seocho', mapId: 'seochoMiniMap' },
+      { btnClass: 'ulsan', mapId: 'ulsanMiniMap' },
+      { btnClass: 'uljin', mapId: 'uljinMiniMap' },
+      { btnClass: 'namwon', mapId: 'namwonMiniMap' },
+    ];
+  
+    mappings.forEach(({ btnClass, mapId }) => {
+      const btn = document.querySelector(`.${btnClass}`);
+      const map = document.getElementById(mapId);
+  
+      btn.addEventListener('mouseenter', () => {
+        const rect = btn.getBoundingClientRect();
+        
+        map.style.display = 'block';
+      });
+  
+      btn.addEventListener('mouseleave', () => {
+        map.style.display = 'none';
+      });
+    });
+  </script>
+  
+  <script>
+    function showbox(id) {
+      const menu = document.getElementById(id);
+      if (menu.style.display === "flex") {
+        menu.style.display = "none";
+      } else {
+        menu.style.display = "flex";
+      }
+    }
+  </script>
+  
+  
+
+</body>
+</html>
