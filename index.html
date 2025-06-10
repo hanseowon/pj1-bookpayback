@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <title>bookpayback</title>
+  <style>
+    @font-face {
+      font-family: 'ddag';
+      src: url('font/ddag\ 복사본.woff') format('woff');
+      
+    }
+    @font-face {
+    font-family: 'cafe';
+      src: url('font/Cafe24Moyamoya-Regular-v1.0\ 복사본.otf') format('opentype');
+    }
+    @font-face {
+    font-family: 'snell';
+      src: url('font/SnellRoundhand.ttc') format('truetype');
+    }
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background-color: rgb(0, 0, 0);
+      background-size: cover;
+      font-family: 'ddag', sans-serif;
+      overflow: hidden;
+    }
+
+    .flexbox {
+  display: flex;
+  justify-content: center;
+   word-spacing: 20px;
+  align-items: center;
+  height: 10vh;
+  
+}
+
+.text, .text2 {
+  margin-top: 50px;
+  font-size: 6vw;
+  color: white;
+  font-family: 'ddag';
+}
+.text2 {
+  font-family: 'snell';
+}
+
+
+ 
+    .booktitle {
+  font-family: 'helvetica';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-90deg);
+  transform-origin: center;
+  font-size: 1vw;
+  color: black;
+  z-index: 6;
+  white-space: nowrap; 
+}
+.booktitle2 {
+  font-weight: 200;
+  font-family: 'helvetica';
+  position: absolute;
+  line-height: 0.8;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-90deg);
+  transform-origin: center;
+  font-size: 2.7vw;
+  color: black;
+  z-index: 7;
+  white-space: nowrap; 
+}
+.booktitle3 {
+  font-family: 'ddag';
+  border: 2px solid rgb(0, 0, 0);
+  border-radius: 30px;
+  padding-left: 8px;
+  padding-right: 8px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-90deg);
+  transform-origin: center;
+  font-size: 2vw;
+  color: rgb(103, 103, 103);
+  z-index: 8;
+  white-space: nowrap; 
+}
+.booktitle4 {
+  border: 4px solid rgb(136, 136, 136);
+  padding-left: 8px;
+  padding-right: 8px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  font-family:Georgia, 'Times New Roman', Times, serif;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-90deg);
+  transform-origin: center;
+  font-size: 3vw;
+  color: rgb(0, 0, 0);
+  z-index: 8;
+  white-space: nowrap; 
+}
+.booktitle5 {
+ font-family:'cafe';
+  position: absolute;
+  text-align: center;
+  top: 20%;
+  left: 10%;
+  transform-origin: center;
+  font-size: 2vw;
+  color: rgb(0, 0, 0);
+  z-index: 8;
+  white-space: nowrap; 
+}
+.booktitle6 {
+ font-family:'snell';
+  position: absolute;
+  text-align: center;
+  top: 20%;
+  left: 10%;
+  transform: translate(-40%, 15%) rotate(-90deg);
+  font-size: 2vw;
+  color: rgb(255, 255, 255);
+  z-index: 8;
+  white-space: nowrap; 
+}
+
+
+    .menubox{
+      position:absolute;
+      top: 17vh;
+      left: 30vw;
+      width:8vw;
+      height: 5vh;
+      border: 1px solid rgb(255, 255, 255) ;
+      border-radius: 28px;
+    }
+
+    .menubox2{
+      position:absolute;
+      top: 17vh;
+      left: 45vw;
+      width:8vw;
+      height: 5vh;
+      border: 1px solid rgb(255, 255, 255) ;
+      border-radius: 28px;
+    }
+    .menubox3{
+
+      position:absolute;
+      top: 17vh;
+      left: 60vw;
+      width:8vw;
+      height: 5vh;
+      border: 1px solid rgb(255, 255, 255) ;
+      border-radius: 28px;
+    }
+    .topmenu {
+      font-family: Helvetica, sans-serif;
+      font-weight: lighter;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 17vw;
+      height: 100%;
+      font-weight: 100;
+      font-size: 1.8vw;
+      cursor: pointer;
+      color: #ffffff;
+      left: -4.6vw;
+      position: relative;
+      transition: background-color 0.3s;
+      text-decoration: none; 
+      padding-top: 2px;
+
+    }
+
+    .topmenu::after {
+      content: attr(data-ko);
+      position: absolute;
+      color: rgb(255, 255, 255);
+      opacity: 0;
+      transition: opacity 0.3s;
+      pointer-events: none;
+    }
+
+    .topmenu:hover {
+     color: transparent;
+    }
+
+    .topmenu:hover::after {
+      opacity: 1;
+    }
+    .topmenu-wrapper {
+  position: relative;
+  display: inline-block;
+}
+    .menusub {
+      
+      background-color: black;
+      display: none;
+      position: absolute;
+      top: 120%;
+      left:0;
+      border: 1px solid rgb(255,255,255);
+      border-radius: 28px;
+      flex-direction: column;
+     
+     
+      z-index: 15;
+    }
+    
+
+
+    .submenu  {
+      font-family:Arial, Helvetica, sans-serif;
+      font-weight: 100;
+      width: 8vw;
+      height: 3vw;
+      font-size: 1.5vw;
+      display: flex;
+      align-items: center;
+      padding-left: 5px;
+      padding-top: 2px;
+      padding-bottom: 2px;
+      justify-content: center; 
+      padding-top: 10px;
+      transition: background-color 0.3s;
+      color: rgb(255, 255, 255);
+      
+      
+    }
+
+    .submenu:hover {
+      border: 1px solid rgb(255,255,255);
+      border-radius: 30px;
+    }
+    a {
+    text-decoration: none;
+    color: inherit;
+    }
+
+    
+    
+    .book {
+      position: absolute;
+      left: 10vw;
+      top: 36vh;
+      width: 4vw;
+      height: 53vh;
+      background-color: rgb(255, 255, 110);
+      z-index: 5;
+      border: solid black;
+      transition: transform 0.5s ease;
+      transform-origin: bottom center;
+    }
+    .book2, .book3, .book4, .book5, .book6, .book7, .book8,.book9,.book10,.book11 {
+      position: absolute;
+      top: 17vh;
+      width: 9vw;
+      height: 68vh;
+      z-index: 5;
+      border: solid black;
+      transition: transform 0.5s ease;
+      transform-origin: bottom right;
+    }
+    .book2 { left: 15vw; background-color: rgb(255, 255, 110); height: 60vh; top: 29vh; width: 6vw; }
+    .book3 { left: 22vw; background-color: rgb(255, 255, 255); height: 50vh; top: 39vh; width: 5vw;}
+    .book4 { left: 27.5vw; background-color: rgb(255, 255, 110); height: 62vh; top: 27vh; width: 5vw; }
+    .book5 { left: 35.5vw; background-color: rgb(255, 255, 255); height: 60vh; top: 29vh; width: 7vw; transform:rotate(-5deg)}
+    .book6 { left: 43vw; background-color: rgb(255, 255, 110); height: 45vh; top: 44vh; width: 7vw; }
+    .book7 { left: 51vw; background-color: rgb(0, 0, 0); border: 1px solid rgb(255, 255, 255); height: 62vh; top: 27vh; width: 5vw; }
+    .book8 { left: 57svw; background-color: rgb(255, 255, 110); height: 47vh; top: 42vh; width: 5vw;}
+    .book9 { left: 63vw; background-color: rgb(0, 0, 0); border: 1px solid rgb(255, 255, 255); height: 65vh; top: 24vh; width: 5vw;}
+    .book10 { left: 68vw; background-color: rgb(255, 255, 110); height: 67vh; top: 21vh; width: 5vw; transform:rotate(13deg);}
+    .book11 { left: 78.5vw; background-color: rgb(255, 255, 110); height: 42vh; top: 47vh; width: 8vw;}
+
+    .fallen-1 { transform: rotate(26deg); transform-origin: bottom right;}
+  .fallen-2 { transform: rotate(27deg);transform-origin: bottom right; }
+  .fallen-3 { transform: rotate(27deg);transform-origin: bottom right; }
+  .fallen-4 { transform: rotate(27deg); transform-origin: bottom right;}
+  .fallen-5 { transform: rotate(23deg); transform-origin: bottom right;}
+  .fallen-6 { transform: rotate(23deg); transform-origin: bottom right;}
+  .fallen-7 { transform: rotate(22deg); transform-origin: bottom right;}
+  .fallen-8 { transform: rotate(21deg);transform-origin: bottom right; }
+  .fallen-9 { transform: rotate(19deg); transform-origin: bottom right;}
+  .fallen-10 { transform: rotate(40.5deg);transform-origin: bottom right; }
+  .fallen-11 { transform: rotate(34deg); transform-origin: bottom right;}
+
+  .information {
+      font-family: 'cafe';
+      position: absolute;
+      left: 15vw;
+      top: 92vh;
+      width: 100vw;
+      height: 63vh;
+      font-size: 3.2vw;
+      font-weight: lighter;
+      transform-origin: bottom center;
+    }
+    .bookunder {
+      position: absolute;
+      top:90vh;
+      left: 50vw;
+      transform: translateX(-50%);
+      width: 185vw;
+      height: 10vh;
+      background: #ffffff;
+      border: 2.5px solid rgb(0, 0, 0);
+     
+      z-index: 0;
+    }
+    .button {
+  position: absolute;
+  background-color: rgb(255, 255, 110);
+  width: 15vw;
+  height: 7vh;
+  top: 91.5vh;
+  left: 60vw;
+  z-index: 10;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid black;
+  
+}
+.button-text {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: lighter;
+  top:0.4vh;
+  left:2vw;
+  position: absolute;
+  color: black; 
+  font-weight:lighter;
+  font-size: 3vw;
+}
+
+
+
+  </style>
+</head>
+<body>
+
+  <script>
+    function showbox(dpname) {
+      const all = document.querySelectorAll(".menusub");
+      all.forEach(m => {
+        if (m.id !== dpname) m.style.display = "none";
+      });
+
+      const box = document.getElementById(dpname);
+      box.style.display = (box.style.display === "block") ? "none" : "block";
+    }
+  </script>
+
+  
+  
+    <!--<div class="text">BOOK BACK</div>
+    <div class="text2">Pay</div>-->
+    <div class="flexbox">
+      <div class="text">BOOK</div>
+      <div class="text2">Pay</div>
+      <div class="text">BACK</div>
+    </div>
+    <div class="menubox">
+      <a href ="About.html" class="topmenu"  data-ko="소개">ABOUT</a>
+      </div>
+      <div class="menubox2">
+      <a href="area.html" class="topmenu" data-ko="지역">AREA</a>
+     
+      </div>
+      <div class="menubox3">
+      <div class="topmenu" onclick="showbox('submenu2')" data-ko="기타">OTHERS</div>
+      <div class="menusub" id="submenu2" style="left: calc(0vw * 2);">
+        <a href ="review.html" class="submenu">후기</a>
+        <a href ="recommend.html" class="submenu">도서 추천</a>
+      </div>
+</div>
+     ///<div class="topmenu" data-ko="더보기"></div>
+</div>
+  
+  
+  
+    <a href="About.html" class="button">
+        <span class="button-text">ABOUT</span>
+    </a>
+      
+    <div class="information" style="z-index: 9;">여러분의 책값을 돌려드립니다!</div>
+    </div>
+    <div class="book" id="book">
+        <div class="booktitle">You can pay back your money with this project</div>
+    </div>
+    <div class="book2" id="book2" style="z-index: 7;">
+        <div class="booktitle2">BOOKPAYBACK<br>BOOKPAYBACK</div>
+    </div>
+    <div class="book3" id="book3" style="z-index: 8;">
+       
+    </div>
+    
+    
+    <div class="book4" id="book4" style="z-index: 8;">
+      <div class="booktitle3">Everyone can join us!</div>
+  </div>
+  <div class="book5" id="book5" style="z-index: 8;">
+    <div class="booktitle4">Give us your book!</div>
+</div>
+<div class="book6" id="book6" style="z-index: 8;">
+  <div class="booktitle5">Good<br><br><p>for</p><br><p>you</p></div>
+</div>
+<div class="book7" id="book7" style="z-index: 8;">
+  <div class="booktitle6">Everyone can join us!</div>
+</div>
+    <div class="book8" id="book8"></div>
+    <div class="book9" id="book9"></div>
+    <div class="book10" id="book10"></div>
+    <div class="book11" id="book11"></div>
+    <div class="bookunder">ABOUT</div>
+    
+    
+      <script>
+        const books = {
+          book: document.getElementById('book'),
+          book2: document.getElementById('book2'),
+          book3: document.getElementById('book3'),
+          book4: document.getElementById('book4'),
+          book5: document.getElementById('book5'),
+          book6: document.getElementById('book6'),
+          book7: document.getElementById('book7'),
+          book8: document.getElementById('book8'),
+          book9: document.getElementById('book9'),
+          book10: document.getElementById('book10'),
+          book11: document.getElementById('book11')
+        };
+      
+        for (let key in books) {
+  const book = books[key];
+  const num = key === 'book' ? '1' : key.replace('book', '');
+
+  book.addEventListener('mouseenter', () => {
+    book.classList.toggle(`fallen-${num}`);
+  });
+}
+
+</script>
+</body>
+</html>
